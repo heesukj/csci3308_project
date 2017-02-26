@@ -11,9 +11,9 @@ export class CrudPage {
     public items:any[] = [];
     searchQuery: string;
 
-    constructor(public backandService:BackandService) {   
+    constructor(public backandService:BackandService) {
         this.searchQuery = '';
-      
+
         this.backandService.on("items_updated")
             .subscribe(
                 data => {
@@ -32,8 +32,8 @@ export class CrudPage {
     }
 
     public postItem() {
-        
-        this.backandService.create('todo', { name: this.name, description: this.description }).subscribe(
+
+        this.backandService.create('user', { name: this.name, description: this.description }).subscribe(
                 data => {
                     // add to beginning of array
                     this.items.unshift({ id: null, name: this.name, description: this.description });
@@ -47,7 +47,7 @@ export class CrudPage {
     }
 
     public getItems() {
-       this.backandService.getList('todo')
+       this.backandService.getList('user')
             .subscribe(
                 data => {
                     console.log(data);
@@ -70,7 +70,7 @@ export class CrudPage {
             q = q.trim();
         }
 
-        let filter = 
+        let filter =
             [
               {
                 fieldName: 'name',
@@ -81,7 +81,7 @@ export class CrudPage {
         ;
 
 
-        this.backandService.getList('todo', null, null, filter)
+        this.backandService.getList('user', null, null, filter)
             .subscribe(
                 data => {
                     console.log("subscribe", data);
