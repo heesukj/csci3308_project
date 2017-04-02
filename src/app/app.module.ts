@@ -13,8 +13,8 @@ import { BackandService } from '../providers/backandService';
     MyApp,
     LoginPage,
     SignupPage,
-    CrudPage,
     ListItemsPage,
+    CrudPage,
     TabsPage
   ],
   imports: [
@@ -25,8 +25,8 @@ import { BackandService } from '../providers/backandService';
     MyApp,
     LoginPage,
     SignupPage,
-    CrudPage,
     ListItemsPage,
+    CrudPage,
     TabsPage
   ],
   providers: [BackandService]

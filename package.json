@@ -1,5 +1,5 @@
 {
-  "name": "ionic-hello-world",
+  "name": "GWM",
   "author": "Ionic Framework",
   "homepage": "http://ionicframework.com/",
   "private": true,
@@ -32,16 +32,16 @@
     "zone.js": "0.7.2"
   },
   "devDependencies": {
-    "@ionic/app-scripts": "1.2.2",
+    "@ionic/app-scripts": "1.1.4",
     "@types/node": "7.0.12",
     "@types/socket.io-client": "1.4.29",
-    "typescript": "^2.2.1"
+    "typescript": "2.0.9"
   },
   "cordovaPlugins": [
     "cordova-plugin-whitelist",
     "cordova-plugin-statusbar",
-    "cordova-plugin-device",
     "cordova-plugin-console",
+    "cordova-plugin-device",
     "cordova-plugin-splashscreen",
     "ionic-plugin-keyboard"
   ],
