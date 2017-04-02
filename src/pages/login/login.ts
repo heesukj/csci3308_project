@@ -8,27 +8,23 @@ import {BackandService} from '../../providers/backandService'
     selector: 'page-login',
 })
 export class LoginPage {
-    
-    username:string = 'test@angular2.com';
-    password:string = 'angular2';
+
+    username:string = 'bob@bobsbbq.com';
+    password:string = 'qwerty';
     auth_type:string = "N/A";
     is_auth_error:boolean = false;
     auth_status:string = null;
     loggedInUser: string = '';
-
-
     oldPassword: string = '';
     newPassword: string = '';
     confirmNewPassword: string = '';
 
-
-    constructor(public backandService:BackandService) { 
+    constructor(public backandService:BackandService) {
         this.auth_type = backandService.getAuthType();
         this.auth_status = backandService.getAuthStatus();
         this.loggedInUser = backandService.getUsername();
     }
-
-
+    
     public getAuthTokenSimple() {
 
         this.auth_type = 'Token';
@@ -63,8 +59,6 @@ export class LoginPage {
         this.auth_status = null;
         this.backandService.signout();
     }
-
-
 
     public changePassword() {
         if (this.newPassword != this.confirmNewPassword){

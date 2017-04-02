@@ -14,26 +14,26 @@ export class CrudPage {
     constructor(public backandService:BackandService) {
         this.searchQuery = '';
 
-        this.backandService.on("items_updated")
-            .subscribe(
-                data => {
-                    console.log("items_updated", data);
-                    let a = data as any[];
-                    let newItem = {};
-                    a.forEach((kv)=> newItem[kv.Key] = kv.Value);
-                    this.items.unshift(newItem);
-                },
-                err => {
-                    console.log(err);
-                },
-                () => console.log('received update from socket')
-        );
+        // this.backandService.on("items_updated")
+        //     .subscribe(
+        //         data => {
+        //             console.log("items_updated", data);
+        //             let a = data as any[];
+        //             let newItem = {};
+        //             a.forEach((kv)=> newItem[kv.Key] = kv.Value);
+        //             this.items.unshift(newItem);
+        //         },
+        //         err => {
+        //             console.log(err);
+        //         },
+        //         () => console.log('received update from socket')
+        // );
 
     }
 
     public postItem() {
 
-        this.backandService.create('user', { name: this.name, description: this.description }).subscribe(
+        this.backandService.create('items', { name: this.name, description: this.description }).subscribe(
                 data => {
                     // add to beginning of array
                     this.items.unshift({ id: null, name: this.name, description: this.description });
@@ -47,7 +47,7 @@ export class CrudPage {
     }
 
     public getItems() {
-       this.backandService.getList('user')
+       this.backandService.getList('items')
             .subscribe(
                 data => {
                     console.log(data);
@@ -81,7 +81,7 @@ export class CrudPage {
         ;
 
 
-        this.backandService.getList('user', null, null, filter)
+        this.backandService.getList('items', null, null, filter)
             .subscribe(
                 data => {
                     console.log("subscribe", data);

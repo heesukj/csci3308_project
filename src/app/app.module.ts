@@ -4,6 +4,7 @@ import { MyApp } from './app.component';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { CrudPage } from '../pages/crud/crud';
+import { ListItemsPage } from '../pages/list-items/list-items';
 import { TabsPage } from '../pages/tabs/tabs';
 import { BackandService } from '../providers/backandService';
 
@@ -13,6 +14,7 @@ import { BackandService } from '../providers/backandService';
     LoginPage,
     SignupPage,
     CrudPage,
+    ListItemsPage,
     TabsPage
   ],
   imports: [
@@ -23,7 +25,8 @@ import { BackandService } from '../providers/backandService';
     MyApp,
     LoginPage,
     SignupPage,
-    CrudPage,    
+    CrudPage,
+    ListItemsPage,
     TabsPage
   ],
   providers: [BackandService]
