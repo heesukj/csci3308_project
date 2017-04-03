@@ -4,7 +4,7 @@ import 'rxjs/Rx'
 import {BackandService} from '../../providers/backandService'
 import { NavController, NavParams } from 'ionic-angular';
 import { StartPage } from '../start/start';
-import { ListItemsPage } from '../list-items/list-items';
+import { GroceryListPage } from '../grocery-list/grocery-list';
 
 @Component({
     templateUrl: 'login.html',
@@ -39,7 +39,7 @@ export class LoginPage {
                 this.loggedInUser = this.username;
                 this.username = '';
                 this.password = '';
-                this.navCtrl.setRoot(ListItemsPage);
+                this.navCtrl.setRoot(GroceryListPage);
             },
             err => {
                 var errorMessage = this.backandService.extractErrorMessage(err);

@@ -8,6 +8,7 @@ import { ListItemsPage } from '../pages/list-items/list-items';
 import { TabsPage } from '../pages/tabs/tabs';
 import { StartPage } from '../pages/start/start';
 import { BackandService } from '../providers/backandService';
+import { GroceryListPage } from '../pages/grocery-list/grocery-list';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { BackandService } from '../providers/backandService';
     ListItemsPage,
     CrudPage,
     TabsPage,
-    StartPage
+    StartPage,
+    GroceryListPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -30,7 +32,8 @@ import { BackandService } from '../providers/backandService';
     ListItemsPage,
     CrudPage,
     TabsPage,
-    StartPage
+    StartPage,
+    GroceryListPage
   ],
   providers: [BackandService]
 })
