@@ -6,6 +6,7 @@ import { SignupPage } from '../pages/signup/signup';
 import { CrudPage } from '../pages/crud/crud';
 import { ListItemsPage } from '../pages/list-items/list-items';
 import { TabsPage } from '../pages/tabs/tabs';
+import { StartPage } from '../pages/start/start';
 import { BackandService } from '../providers/backandService';
 
 @NgModule({
@@ -15,7 +16,8 @@ import { BackandService } from '../providers/backandService';
     SignupPage,
     ListItemsPage,
     CrudPage,
-    TabsPage
+    TabsPage,
+    StartPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -27,7 +29,8 @@ import { BackandService } from '../providers/backandService';
     SignupPage,
     ListItemsPage,
     CrudPage,
-    TabsPage
+    TabsPage,
+    StartPage
   ],
   providers: [BackandService]
 })

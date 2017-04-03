@@ -19,6 +19,8 @@ export class ListItemsPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public backandService:BackandService) {
 
+    this.searchQuery = '';
+
     this.backandService.on("items_updated")
         .subscribe(
             data => {
