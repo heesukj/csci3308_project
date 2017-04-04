@@ -9,9 +9,9 @@
         <label *ngIf="auth_status == 'OK'"><button ion-button (click)="signOut()" color="error">Sign Out</button>{{loggedInUser}}</label>
     </div>
 
-    <div>
+    <!-- <div>
         <label>Choose authentication type:</label>
-    </div>
+    </div> -->
 
     <ion-list>
 
@@ -27,16 +27,16 @@
 
     </ion-list>
 
-    <button ion-button (click)="getAuthTokenSimple()" color="success">Token Auth</button>
-    <button ion-button (click)="useAnonymousAuth()" color="danger">Anonymous Auth</button>
-    <br/>
+    <button ion-button (click)="getAuthTokenSimple()" color="success">Login</button>
+    <!-- <button ion-button (click)="useAnonymousAuth()" color="danger">Anonymous Auth</button> -->
+    <!-- <br/>
     <label>Using {{auth_type}} authentication</label>
     <div>
         <label [class.alert]="is_auth_error" [class.alert-danger]="is_auth_error">{{auth_status}}</label>
-    </div>
-    
+    </div> -->
 
-    <hr/>
+
+    <!-- <hr/>
     <h2>Change Password</h2>
     <ion-list>
         <ion-item>
@@ -55,6 +55,6 @@
 
         <button ion-button (click)="changePassword()" color="success">Change Password</button>
 
-    </ion-list>
+    </ion-list> -->
 
 </ion-content>

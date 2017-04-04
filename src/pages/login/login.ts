@@ -2,32 +2,31 @@ import {Component} from '@angular/core';
 // import {bootstrap} from '@angular/platform-browser-dynamic';
 import 'rxjs/Rx'
 import {BackandService} from '../../providers/backandService'
+import { NavController, NavParams } from 'ionic-angular';
+import { StartPage } from '../start/start';
+import { GroceryListPage } from '../grocery-list/grocery-list';
 
 @Component({
     templateUrl: 'login.html',
     selector: 'page-login',
 })
 export class LoginPage {
-    
-    username:string = 'test@angular2.com';
-    password:string = 'angular2';
+
+    username:string = 'bob@bobsbbq.com';
+    password:string = 'qwerty';
     auth_type:string = "N/A";
     is_auth_error:boolean = false;
     auth_status:string = null;
     loggedInUser: string = '';
-
-
     oldPassword: string = '';
     newPassword: string = '';
     confirmNewPassword: string = '';
 
-
-    constructor(public backandService:BackandService) { 
+    constructor(public navCtrl: NavController, public navParams: NavParams, public backandService:BackandService) {
         this.auth_type = backandService.getAuthType();
         this.auth_status = backandService.getAuthStatus();
         this.loggedInUser = backandService.getUsername();
     }
-
 
     public getAuthTokenSimple() {
 
@@ -40,6 +39,7 @@ export class LoginPage {
                 this.loggedInUser = this.username;
                 this.username = '';
                 this.password = '';
+                this.navCtrl.setRoot(GroceryListPage);
             },
             err => {
                 var errorMessage = this.backandService.extractErrorMessage(err);
@@ -62,9 +62,8 @@ export class LoginPage {
     public signOut() {
         this.auth_status = null;
         this.backandService.signout();
+        this.navCtrl.setRoot(StartPage);
     }
-
-
 
     public changePassword() {
         if (this.newPassword != this.confirmNewPassword){

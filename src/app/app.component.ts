@@ -1,16 +1,20 @@
-import { Component } from '@angular/core';
-import { Platform } from 'ionic-angular';
-import { StatusBar } from 'ionic-native';
+import { Component, ViewChild } from '@angular/core';
+import { Nav, Platform } from 'ionic-angular';
+import { StatusBar, Splashscreen } from 'ionic-native';
 
-import { TabsPage } from '../pages/tabs/tabs';
+import { StartPage } from '../pages/start/start';
 
 import {BackandService} from '../providers/backandService'
 
 @Component({
-  template: `<ion-nav [root]="rootPage"></ion-nav>`
+  templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage = TabsPage;
+  @ViewChild(Nav) nav: Nav;
+
+  rootPage = StartPage;
+
+  pages: Array<{title: string, component: any}>;
 
   constructor(platform: Platform, private backandService:BackandService) {
     platform.ready().then(() => {
@@ -18,9 +22,22 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
       backandService.setIsMobile(platform.is('mobile'));
-      backandService.setAppName('gwm');
-      backandService.setSignUpToken('b3bb4832-b36f-4056-880f-2f285d3486b2');
-      backandService.setAnonymousToken('bd14a5a2-637b-434f-a76d-f8faabef17b3');
+      backandService.setAppName('gwm2');
+      backandService.setSignUpToken('df0cc272-ba30-4c7b-bde3-919803469efa');
+      backandService.setAnonymousToken('a1b0c320-55f9-4228-a29c-51c47612b468');
+
+      StatusBar.styleDefault();
+      Splashscreen.hide();
     });
+
+    this.pages = [
+      { title: 'Start Page', component: StartPage }
+    ];
+  }
+
+  openPage(page) {
+    // Reset the content nav to have just this page
+    // we wouldn't want the back button to show in this scenario
+    this.nav.setRoot(page.component);
   }
 }

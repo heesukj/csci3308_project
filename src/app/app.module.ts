@@ -4,16 +4,22 @@ import { MyApp } from './app.component';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { CrudPage } from '../pages/crud/crud';
+import { ListItemsPage } from '../pages/list-items/list-items';
 import { TabsPage } from '../pages/tabs/tabs';
+import { StartPage } from '../pages/start/start';
 import { BackandService } from '../providers/backandService';
+import { GroceryListPage } from '../pages/grocery-list/grocery-list';
 
 @NgModule({
   declarations: [
     MyApp,
     LoginPage,
     SignupPage,
+    ListItemsPage,
     CrudPage,
-    TabsPage
+    TabsPage,
+    StartPage,
+    GroceryListPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -23,8 +29,11 @@ import { BackandService } from '../providers/backandService';
     MyApp,
     LoginPage,
     SignupPage,
-    CrudPage,    
-    TabsPage
+    ListItemsPage,
+    CrudPage,
+    TabsPage,
+    StartPage,
+    GroceryListPage
   ],
   providers: [BackandService]
 })
