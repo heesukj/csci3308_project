@@ -1,6 +1,8 @@
-import {Component} from '@angular/core';
+import { Component } from '@angular/core';
 import 'rxjs/Rx'
-import {BackandService} from '../../providers/backandService'
+import { NavController, NavParams } from 'ionic-angular';
+import { BackandService } from '../../providers/backandService'
+import { GroceryListPage } from '../grocery-list/grocery-list';
 
 @Component({
   templateUrl: 'signup.html',
@@ -14,7 +16,8 @@ export class SignupPage {
   signUpPassword: string = '';
   confirmPassword: string = '';
 
-  constructor(private backandService:BackandService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private backandService:BackandService) {
+  // constructor(private backandService:BackandService) {
 
 
   }
@@ -25,22 +28,25 @@ export class SignupPage {
       return;
     }
     var $obs = this.backandService.signup(this.email, this.signUpPassword, this.confirmPassword, this.firstName, this.lastName);
-    $obs.subscribe(                
+    $obs.subscribe(
       data => {
-          alert('Sign up succeeded');
+          console.log('Sign up succeeded');
           this.email = this.signUpPassword = this.confirmPassword = this.firstName = this.lastName = '';
+          this.navCtrl.setRoot(GroceryListPage);
       },
       err => {
-          this.backandService.logError(err)
+        alert('Sign up failed');
+        console.error("error is", err);
+          // this.backandService.logError(err)
       },
       () => console.log('Finish Auth'));
   }
 
   public socialSignin(provider) {
     var $obs = this.backandService.socialSignin(provider);
-    $obs.subscribe(                
+    $obs.subscribe(
         data => {
-            console.log('Sign up succeeded with:' + provider);           
+            console.log('Sign up succeeded with:' + provider);
         },
         err => {
             this.backandService.logError(err)
@@ -50,9 +56,9 @@ export class SignupPage {
 
   public inAppSocial(provider) {
     var $obs = this.backandService.inAppSocial(provider);
-    $obs.subscribe(                
+    $obs.subscribe(
         data => {
-            console.log('Sign up succeeded with:' + provider);           
+            console.log('Sign up succeeded with:' + provider);
         },
         err => {
             this.backandService.logError(err)
