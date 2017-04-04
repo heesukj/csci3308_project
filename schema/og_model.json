@@ -1,0 +1,64 @@
+[
+  {
+    "name": "user",
+    "fields": {
+      "list": {
+        "collection": "list",
+        "via": "owner"
+      },
+      "name": {
+        "type": "text"
+      },
+      "userid": {
+        "type": "string"
+      }
+    }
+  },
+  {
+    "name": "list",
+    "fields": {
+      "listid": {
+        "collection": "listitem",
+        "via": "listid"
+      },
+      "name": {
+        "type": "string"
+      },
+      "state": {
+        "type": "boolean"
+      },
+      "owner": {
+        "object": "user"
+      }
+    }
+  },
+  {
+    "name": "item",
+    "fields": {
+      "itemid": {
+        "collection": "listitem",
+        "via": "itemid"
+      },
+      "name": {
+        "type": "string"
+      }
+    }
+  },
+  {
+    "name": "listitem",
+    "fields": {
+      "listid": {
+        "object": "list"
+      },
+      "itemid": {
+        "object": "item"
+      },
+      "quantity": {
+        "type": "string"
+      },
+      "state": {
+        "type": "boolean"
+      }
+    }
+  }
+]
