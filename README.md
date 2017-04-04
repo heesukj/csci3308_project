@@ -23,49 +23,84 @@ or
 
 
 
-NOTES:
-Folders:
+### Notes
+###Folders:
 
-Hooks:
+#Hooks:
+
     Scripts that are run before, during and after building and testing the app. "Not typically messed with."
-Node_mododules:
+    
+#Node_mododules:
+
     This is where node js and npm store the dependencies of the app we will make.
-Platforms:
+    
+#Platforms:
+
     Is where cordova generates platform specific code. Holds emulators.
-Plugins:
+    
+#Plugins:
+
     Where cordova stores native plugin codes.
         Ex:Bluetooth, wifi.
-Resources:
+        
+#Resources:
+
     Stores our icon and splash screen that are generated wth cordova.
-Source:
+    
+#Source:
+
     Where most of our app code runs. Where we will spend most of our time.
-WWW:
+    
+#WWW:
+
     Static output folder for our app. Everytime ionic builds our app that code goes into www folder.
+    
 
-Files:
-edutorconfig:
+###Files:
+
+#edutorconfig:
+
     Helps better format code using ionic codestandards.
-gitignore:
-    Makes it so you dont checkin unimported files into github.
-Config.xml:
-    configuration file for cordova that lets you configure the cordova app, store plugins.
-Ionic.config.json:
-    Node metadeta file that says what dependencies your app has. 
-Tsconfig.json:
-    Specifies configuration for typescript. Generally you shouldnt modify this file.
-Tsling.json:
-    Linter rule. Helps format your code and tells you when lines of codes are formatted correctly.
+    
+#gitignore:
 
-We will spend most of our time in the source folder.
-srs folder files:
-    App:
+    Makes it so you dont checkin unimported files into github.
+    
+#Config.xml:
+
+    configuration file for cordova that lets you configure the cordova app, store plugins.
+    
+#Ionic.config.json:
+
+    Node metadeta file that says what dependencies your app has. 
+    
+#Tsconfig.json:
+
+    Specifies configuration for typescript. Generally you shouldnt modify this file.
+    
+#Tsling.json:
+
+    Linter rule. Helps format your code and tells you when lines of codes are formatted correctly.
+    We will spend most of our time in the source folder.
+    
+###srs folder files:
+#App:
+
         Runs the initial code that jumpstarts your app.
-    Assets:
+        
+#Assets:
+
         Store static assents like images.
-    Pages:
+        
+#Pages:
+
         Code for every single one of our pages lives.
-    Themes:
+        
+#Themes:
+
         We can change color settings of the app, changing how it looks.
-    Declaration.ts:
+        
+#Declaration.ts:
+
         Ignore.
 
