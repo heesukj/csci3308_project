@@ -484,7 +484,7 @@ export class BackandService {
     }
 
 
-
+// params with = get the default values specified: i.e the default of 'deep' is 'false' -> optional to add as an argment
     public getList(object: string,
         pageSize: number = null,
         pageNumber: number = null,

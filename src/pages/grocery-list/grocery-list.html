@@ -4,23 +4,29 @@
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
+<ion-header class="page-grocery-list-header">
 
   <ion-navbar>
-    <ion-title>GroceryList</ion-title>
+    <ion-title class="title-block"><h3 class="title-text">My Lists</h3></ion-title>
+    <!-- <button ion-button class='add-button' (click)="add()" color="light" round>
+      <ion-icon name="md-add-circle"></ion-icon>
+    </button> -->
+    <button ion-button icon-only icon-right clear class="add-list-button" (click)="add()">
+      <ion-icon name="md-add-circle"></ion-icon>
+    </button>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-  <h2>Grocery List</h2>
+<ion-content padding class="page-grocery-list-content">
+  <!-- <h2>Grocery List</h2> -->
 
-  <ion-list>
-      <ion-item *ngFor="let item of items">
-        <h2>{{ item.name }}</h2>
-        <p>{{ item.state }}</p>
-        <p>{{ item.user }}</p>
-      </ion-item>
+  <ion-list class="heesuk">
+      <button ion-item *ngFor="let groceryList of groceryLists" (click)="listSelected(groceryList)">
+        <h2>{{ groceryList.name }}</h2>
+        <!-- <p>{{ item.state }}</p> -->
+        <!-- <p>{{ item.user }}</p> -->
+      </button>
   </ion-list>
 </ion-content>

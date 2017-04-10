@@ -7,14 +7,17 @@
       },
       "description": {
         "type": "text"
+      },
+      "list": {
+        "object": "grocery_list"
       }
     }
   },
   {
     "name": "users",
     "fields": {
-      "list": {
-        "collection": "list",
+      "list1": {
+        "collection": "grocery_list",
         "via": "user"
       },
       "email": {
@@ -29,8 +32,12 @@
     }
   },
   {
-    "name": "list",
+    "name": "grocery_list",
     "fields": {
+      "items": {
+        "collection": "items",
+        "via": "list"
+      },
       "name": {
         "type": "string"
       },
