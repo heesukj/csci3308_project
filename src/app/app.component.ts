@@ -3,6 +3,7 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 import { SignupPage} from '../pages/signup/signup';
 import { StartPage } from '../pages/start/start';
+import { LoginPage } from '../pages/login/login';
 
 import {BackandService} from '../providers/backandService'
 
@@ -31,7 +32,8 @@ export class MyApp {
     });
 
     this.pages = [
-      { title: 'SignUp Page', component: SignupPage }
+      { title: 'SignUp Page', component: SignupPage },
+{ title: 'Login', component: LoginPage },
     ];
   }
 
