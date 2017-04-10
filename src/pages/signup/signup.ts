@@ -3,6 +3,8 @@ import 'rxjs/Rx'
 import { NavController, NavParams } from 'ionic-angular';
 import { BackandService } from '../../providers/backandService'
 import { GroceryListPage } from '../grocery-list/grocery-list';
+import { LoginPage } from '../login/login';
+
 
 @Component({
   templateUrl: 'signup.html',
@@ -19,6 +21,10 @@ export class SignupPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, private backandService:BackandService) {
   // constructor(private backandService:BackandService) {
 
+
+  }
+    ionViewDidLoad() {
+    console.log('ionViewDidLoad SignupPage');
 
   }
 
@@ -65,4 +71,9 @@ export class SignupPage {
         },
         () => console.log('Finish Auth'));
   }
+  gotoLogin() {
+    this.navCtrl.push(LoginPage);
+  }
 }
+
+  

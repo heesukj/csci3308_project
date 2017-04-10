@@ -12,8 +12,8 @@ import { GroceryListPage } from '../grocery-list/grocery-list';
 })
 export class LoginPage {
 
-    username:string = 'bob@bobsbbq.com';
-    password:string = 'qwerty';
+    username:string = '';
+    password:string = '';
     auth_type:string = "N/A";
     is_auth_error:boolean = false;
     auth_status:string = null;
