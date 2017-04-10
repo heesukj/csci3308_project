@@ -10,7 +10,8 @@
     <ion-title class="title-block"><h3 class="title-text">My Lists</h3></ion-title>
     <!-- <button ion-button class='add-button' (click)="add()" color="light" round>
       <ion-icon name="md-add-circle"></ion-icon>
-    </button> -->
+    </button>
+  Create a button for '+' : when click this button, execute add() function: defined it in grocery-list.ts -->
     <button ion-button icon-only icon-right clear class="add-list-button" (click)="add()">
       <ion-icon name="md-add-circle"></ion-icon>
     </button>
@@ -21,11 +22,15 @@
 
 <ion-content padding class="page-grocery-list-content">
   <!-- <h2>Grocery List</h2> -->
+
+  <!-- Create a 'searchBar' -->
   <ion-searchbar
     [(ngModel)]="searchQuery"
     (ionInput)="filterItems($event.target.value)">
   </ion-searchbar>
 
+<!-- 1) nav setup: create a loop -> navigate each list to the corresponding list-items page 
+when click a list.name (execute listSelected function which is defined in grocery-list.ts)  -->
   <ion-list class="heesuk">
       <button ion-item *ngFor="let groceryList of groceryLists" (click)="listSelected(groceryList)">
         <h2>{{ groceryList.name }}</h2>
