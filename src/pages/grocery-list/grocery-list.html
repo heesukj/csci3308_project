@@ -21,6 +21,10 @@
 
 <ion-content padding class="page-grocery-list-content">
   <!-- <h2>Grocery List</h2> -->
+  <ion-searchbar
+    [(ngModel)]="searchQuery"
+    (ionInput)="filterItems($event.target.value)">
+  </ion-searchbar>
 
   <ion-list class="heesuk">
       <button ion-item *ngFor="let groceryList of groceryLists" (click)="listSelected(groceryList)">
