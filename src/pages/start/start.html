@@ -1,20 +1,40 @@
-<!--
-  Generated template for the Start page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>Welcome!</ion-title>
-  </ion-navbar>
 
 </ion-header>
 <ion-content padding>
+  <div text-center>
+      <img  src= "assets/images/logo.png" class="center-image" class="padding" class="size" >
+  </div>
+  <header text-center>
+      <h1>Grocery With Me</h1>
+  </header>
+  <div text-center class="lato">
+    The best way to organize your shopping needs.
+  </div>
 
-  <h2>Grocery With Me</h2>
-  <button ion-button (click)="gotoSignUp()" color="success">Create Account</button>
-  <h3>Already a User?</h3>
-  <button ion-button (click)="gotoLogin()" color="success">Login</button>
+    <ion-item>
+        <ion-label floating>Email</ion-label>
+        <ion-input type="email" [value]="email" (input)="email = $event.target.value"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label floating>First Name</ion-label>
+        <ion-input type="text" [value]="firstName" (input)="firstName = $event.target.value"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label floating>Last Name</ion-label>
+        <ion-input type="text" [value]="lastName" (input)="lastName = $event.target.value"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input type="password" [value]="signUpPassword" (input)="signUpPassword = $event.target.value"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label floating>Confirm Password</ion-label>
+        <ion-input type="password" [value]="confirmPassword" (input)="confirmPassword = $event.target.value"></ion-input>
+    </ion-item>
+  <div text-center>
+  <button ion-button (click)="signUp()" color="success" class="buttonCenter" class="button-font" class="buttonStyle" text-center>Sign Up For Free</button>
+  <h3 class='font-size'>Already a User?  <button ion-button (click)="gotoLogin()" color="success" class='smallButton' class="invis">Login</button>
+  </h3>
+  </div>
 </ion-content>

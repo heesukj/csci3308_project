@@ -1,6 +1,36 @@
-.page2 {
+page-start {
 
 }
-.icon {
-  font-size: 90px;
+.font-size{
+    font-size: 10px;
+}
+.smallButton{
+    width: 40px
+}
+.padding{
+    padding-bottom: 30px;
+}
+.size{
+    margin:10%;
+    max-width: 30% !important;
+    max-height: 70% !important;
+    font-size: 300px;
+}
+.invis{
+    background-color: #ffffff;
+    color: #000000;
+}
+.buttonCenter{
+    text-center:center;
+}
+.button-font{
+    font-family: 'Comic Neue', sans-serif;
+
+}
+.lato{
+    font-family: 'lato';
+    color: 	#C0C0C0;
+}
+.buttonStyle{
+    font-size: 14px;
 }

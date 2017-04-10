@@ -3,6 +3,8 @@ import 'rxjs/Rx'
 import { NavController, NavParams } from 'ionic-angular';
 import { BackandService } from '../../providers/backandService'
 import { GroceryListPage } from '../grocery-list/grocery-list';
+import { LoginPage } from '../login/login';
+import { AlertController } from 'ionic-angular';
 
 @Component({
   templateUrl: 'signup.html',
@@ -16,9 +18,13 @@ export class SignupPage {
   signUpPassword: string = '';
   confirmPassword: string = '';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private backandService:BackandService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private backandService:BackandService, public alerCtrl: AlertController) {
   // constructor(private backandService:BackandService) {
 
+
+  }
+    ionViewDidLoad() {
+    console.log('ionViewDidLoad SignupPage');
 
   }
 
@@ -66,4 +72,18 @@ export class SignupPage {
         },
         () => console.log('Finish Auth'));
   }
+  gotoLogin() {
+    this.navCtrl.push(LoginPage);
+  }
+doAlert() {
+        let alert = this.alerCtrl.create({
+                title: 'Hey There!',
+                message: 'Welcome to GroceryWithMe! Feel free to Log In!',
+                buttons: ['OK']
+                });
+		alert.present()
 }
+
+}
+
+  

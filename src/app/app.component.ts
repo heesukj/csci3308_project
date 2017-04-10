@@ -1,8 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
-
+import { SignupPage} from '../pages/signup/signup';
 import { StartPage } from '../pages/start/start';
+import { LoginPage } from '../pages/login/login';
 
 import {BackandService} from '../providers/backandService'
 
@@ -12,7 +13,7 @@ import {BackandService} from '../providers/backandService'
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage = StartPage;
+  rootPage = SignupPage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -31,7 +32,8 @@ export class MyApp {
     });
 
     this.pages = [
-      { title: 'Start Page', component: StartPage }
+      { title: 'SignUp Page', component: SignupPage },
+{ title: 'Login', component: LoginPage },
     ];
   }
 
