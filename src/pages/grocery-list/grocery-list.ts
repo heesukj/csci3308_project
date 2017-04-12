@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { BackandService } from '../../providers/backandService';
+// 3) nav setup
 import { ListItemsPage } from '../list-items/list-items';
 /*
   Generated class for the GroceryList page.
@@ -13,8 +14,8 @@ import { ListItemsPage } from '../list-items/list-items';
   templateUrl: 'grocery-list.html'
 })
 export class GroceryListPage {
-
-  groceryLists:any[] = [];
+  // declare groceryLists in array with a type 'any'
+  groceryLists: any[] = [];
   searchQuery: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public backandService:BackandService) {
@@ -27,10 +28,12 @@ export class GroceryListPage {
     console.log('ionViewDidLoad GroceryListPage');
   }
 
+// define add() = (+: button) function here
   public add() {
     console.log('you should implement add');
   }
 
+// 2) nav setup: define a function 'listSelected' passing a param 'groceryList'
   listSelected(groceryList) {
   	//alert(item.text); instead 'alerting', we tell our navCtrl to push instances of our detail page into the navigation stack by conveiently assigning the constructor argument to the currrent instances of the class we are in, passing DetailPage
   	this.navCtrl.push(ListItemsPage, {

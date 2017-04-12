@@ -29,7 +29,7 @@
     (ionInput)="filterItems($event.target.value)">
   </ion-searchbar>
 
-<!-- 1) nav setup: create a loop -> navigate each list to the corresponding list-items page 
+<!-- 1) nav setup: create a loop -> navigate each list to the corresponding list-items page
 when click a list.name (execute listSelected function which is defined in grocery-list.ts)  -->
   <ion-list class="heesuk">
       <button ion-item *ngFor="let groceryList of groceryLists" (click)="listSelected(groceryList)">

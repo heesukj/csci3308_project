@@ -531,7 +531,7 @@ export class BackandService {
             .retry(3)
             .map(res => res.json().data);
     }
-
+// get one grocery-list with all the items, which are generated under the grocery-list (based on foreign key relationship: list-items)
     public getOne(object: string, id: string, deep: boolean = false, exclude: string[] = null, level: number = null) {
         let query: string = '';
         let queryParams : string[] = [];
