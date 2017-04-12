@@ -42,6 +42,7 @@ export class SignupPage {
       },
       err => {
         alert('Sign up failed');
+        // TODO: Create a var to store a message for "signup fails here": i.e. Invalid email, Duplicate firstName, Invalid password
         console.error("error is", err);
           // this.backandService.logError(err)
       },
