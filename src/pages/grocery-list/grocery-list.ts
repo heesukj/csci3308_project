@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import {BackandService} from '../../providers/backandService';
+import { BackandService } from '../../providers/backandService';
+// 3) nav setup
+import { ListItemsPage } from '../list-items/list-items';
 /*
   Generated class for the GroceryList page.
 
@@ -12,27 +14,39 @@ import {BackandService} from '../../providers/backandService';
   templateUrl: 'grocery-list.html'
 })
 export class GroceryListPage {
-
-  items:any[] = [];
+  // declare groceryLists in array with a type 'any'
+  groceryLists: any[] = [];
   searchQuery: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public backandService:BackandService) {
 
     this.searchQuery = '';
-    this.getItems();
+    this.getGroceryList();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad GroceryListPage');
   }
 
+// define add() = (+: button) function here
+  public add() {
+    console.log('you should implement add');
+  }
 
-  public getItems() {
-     this.backandService.getList('list')
+// 2) nav setup: define a function 'listSelected' passing a param 'groceryList'
+  listSelected(groceryList) {
+  	//alert(item.text); instead 'alerting', we tell our navCtrl to push instances of our detail page into the navigation stack by conveiently assigning the constructor argument to the currrent instances of the class we are in, passing DetailPage
+  	this.navCtrl.push(ListItemsPage, {
+  		groceryList: groceryList
+  	});
+  }
+
+  public getGroceryList() {
+     this.backandService.getList('grocery_list')
           .subscribe(
               data => {
                   console.log(data);
-                  this.items = data;
+                  this.groceryLists = data;
               },
               err => this.backandService.logError(err),
               () => console.log('OK')
@@ -62,11 +76,11 @@ export class GroceryListPage {
       ;
 
 
-      this.backandService.getList('list', null, null, filter)
+      this.backandService.getList('grocery_list', null, null, filter)
           .subscribe(
               data => {
                   console.log("subscribe", data);
-                  this.items = data;
+                  this.groceryLists = data;
               },
               err => this.backandService.logError(err),
               () => console.log('OK')

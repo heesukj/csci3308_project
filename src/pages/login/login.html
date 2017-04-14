@@ -10,7 +10,10 @@
     The best way to organize your shopping needs.
   </div>
     <div>
-        <label *ngIf="auth_status == 'OK'"><button ion-button (click)="signOut()" color="error">Sign Out</button>{{loggedInUser}}</label>
+        <!-- <label *ngIf="auth_status == 'OK'">
+          <button ion-button (click)="signOut()" color="error">Sign Out</button>
+          {{loggedInUser}}
+        </label> -->
     </div>
 
     <!-- <div>
@@ -39,6 +42,8 @@
 
  <!-- <button ion-button (click)="gotoSignUp()" color="success" class="buttonCenter" class="button-font" class="buttonStyle" text-center>Return</button> -->  
  
+<button ion-button (click)="gotoSignUp()" color="success" class="buttonCenter" class="button-font" class="buttonStyle" text-center>Return</button>
+
     <!-- <button ion-button (click)="useAnonymousAuth()" color="danger">Anonymous Auth</button> -->
     <!-- <br/>
     <label>Using {{auth_type}} authentication</label>
