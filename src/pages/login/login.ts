@@ -11,8 +11,8 @@ import { GroceryListPage } from '../grocery-list/grocery-list';
 })
 export class LoginPage {
 
-    username:string = 'heesuk@gmail.com';
-    password:string = 'zxcvb123';
+    username:string = '';
+    password:string = '';
     // username:string = '';
     // password:string = '';
     auth_type:string = "N/A";
