@@ -13,7 +13,7 @@ import {BackandService} from '../providers/backandService'
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage = SignupPage;
+  rootPage = LoginPage;
 
   pages: Array<{title: string, component: any}>;
 
@@ -32,7 +32,7 @@ export class MyApp {
     });
 
     this.pages = [
-      { title: 'SignUp Page', component: SignupPage },
+      { title: 'Login Page', component: SignupPage },
 { title: 'Login', component: LoginPage },
     ];
 }
