@@ -10,6 +10,7 @@ import { StartPage } from '../pages/start/start';
 import { BackandService } from '../providers/backandService';
 import { GroceryListPage } from '../pages/grocery-list/grocery-list';
 import { GroceryListPopoverPage } from '../pages/grocery-list-popover/grocery-list-popover';
+import { ListItemsPopoverPage } from '../pages/list-items-popover/list-items-popover';
 
 import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
 
@@ -29,7 +30,8 @@ const cloudSettings: CloudSettings = {
     TabsPage,
     StartPage,
     GroceryListPage,
-    GroceryListPopoverPage
+    GroceryListPopoverPage,
+    ListItemsPopoverPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -44,7 +46,8 @@ const cloudSettings: CloudSettings = {
     TabsPage,
     StartPage,
     GroceryListPage,
-    GroceryListPopoverPage
+    GroceryListPopoverPage,
+    ListItemsPopoverPage
   ],
   providers: [BackandService]
 })
