@@ -9,6 +9,15 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StartPage } from '../pages/start/start';
 import { BackandService } from '../providers/backandService';
 import { GroceryListPage } from '../pages/grocery-list/grocery-list';
+import { GroceryListPopoverPage } from '../pages/grocery-list-popover/grocery-list-popover';
+
+import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
+
+const cloudSettings: CloudSettings = {
+  'core': {
+    'app_id': 'a1aa4b64'
+  }
+};
 
 @NgModule({
   declarations: [
@@ -19,7 +28,8 @@ import { GroceryListPage } from '../pages/grocery-list/grocery-list';
     CrudPage,
     TabsPage,
     StartPage,
-    GroceryListPage
+    GroceryListPage,
+    GroceryListPopoverPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -33,7 +43,8 @@ import { GroceryListPage } from '../pages/grocery-list/grocery-list';
     CrudPage,
     TabsPage,
     StartPage,
-    GroceryListPage
+    GroceryListPage,
+    GroceryListPopoverPage
   ],
   providers: [BackandService]
 })
