@@ -101,10 +101,3 @@ export class GroceryListPage {
   }
 
 }
-
-@Component({})
-class Profile {
-   constructor(params: NavParams) {
-     console.log('UserId', params.get('userId'));
-   }
- }

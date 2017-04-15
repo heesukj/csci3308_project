@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, PopoverController } from 'ionic-angular';
 import {BackandService} from '../../providers/backandService';
-
+import {ListItemsPopoverPage} from '../list-items-popover/list-items-popover';
 /*
   Generated class for the ListItems page.
 
@@ -19,7 +19,8 @@ export class ListItemsPage {
   items:any[] = [];
   searchQuery: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public backandService:BackandService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    public backandService:BackandService, public popoverCtrl:PopoverController) {
     this.groceryList = navParams.get('groceryList');
     this.searchQuery = '';
 
@@ -47,6 +48,18 @@ export class ListItemsPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad ListItemsPage');
   }
+
+  presentPopover(listItems) {
+  // console.log('presentPopover', groceryList);
+  //http://ionicframework.com/docs/api/components/popover/PopoverController/
+  //groceryList is set as a navParam in GroceryListPopoverPage
+    let popover = this.popoverCtrl.create(ListItemsPopoverPage,
+                                            { listItems: listItems },
+                                            { showBackdrop: true });
+    popover.present();
+  }
+
+
 // define a getItemsForList function, passing a param 'groceryListId'
   public getItemsForList(groceryListId) {
     // From 'backandService.ts':
@@ -97,5 +110,4 @@ export class ListItemsPage {
               () => console.log('OK')
           );
   }
-
 }
