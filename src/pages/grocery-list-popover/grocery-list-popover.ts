@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
-import { ViewController, NavParams } from 'ionic-angular';
-
+import {AlertController} from 'ionic-angular';
+import { BackandService } from '../../providers/backandService';
+import { NavController, NavParams, PopoverController, ViewController } from 'ionic-angular';
+// 3) nav setup
+import { ListItemsPage } from '../list-items/list-items';
 /*
   Generated class for the GroceryListPopover page.
 
@@ -14,23 +17,66 @@ import { ViewController, NavParams } from 'ionic-angular';
 export class GroceryListPopoverPage {
 
   groceryList: any;
+  change: string; '';
+  object: string; '';
 
-  constructor(public viewCtrl: ViewController, public navParams: NavParams) {
+
+
+  constructor(public viewCtrl: ViewController, public navParams: NavParams,public backandService:BackandService, private alertCtrl: AlertController) {
     console.log('GroceryListPopoverPage groceryList', navParams.data.groceryList);
     this.groceryList = navParams.data.groceryList;
+    this.object = 'grocery_list';
+
+    
   }
 
   // ionViewDidLoad() {
   //   console.log('ionViewDidLoad GroceryListPopoverPage');
   //
   // }
+  presentPrompt() {
+  
+}
 
   close() {
     this.viewCtrl.dismiss();
   }
 
   rename() {
-    console.log('you should implement rename');
+    let alert = this.alertCtrl.create({
+    title: 'New List Name',
+    inputs: [
+      {
+        name: 'newName',
+        placeholder: ''
+      }
+    ],
+    buttons: [
+      {
+        text: 'Cancel',
+        role: 'cancel',
+        handler: data => {
+          console.log('Cancel clicked');
+        }
+      },
+      {
+        text: 'Rename',
+        handler: data =>{
+          this.change = data.newName;
+          console.log(this.change);
+          console.log(this.object);
+          console.log(this.groceryList.id);
+          this.backandService.delete('grocery_list', this.groceryList.id);
+          this.groceryList.name = this.change;
+          console.log(this.groceryList.name);
+          console.log(this.groceryList);
+          this.backandService.create('grocery_list', this.groceryList);
+        }
+      }
+    ]
+  });
+  alert.present();
+  this.viewCtrl.dismiss();
   }
 
   addReminder() {
