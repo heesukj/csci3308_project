@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ViewController, NavParams } from 'ionic-angular';
-
+import { BackandService } from '../../providers/backandService';
 /*
   Generated class for the GroceryListPopover page.
 
@@ -12,10 +12,10 @@ import { ViewController, NavParams } from 'ionic-angular';
   templateUrl: 'list-items-popover.html'
 })
 export class ListItemsPopoverPage {
-
+//listItems is provided in the navParams
   listItems: any;
 
-  constructor(public viewCtrl: ViewController, public navParams: NavParams) {
+  constructor(public viewCtrl: ViewController, public navParams: NavParams, public backandService:BackandService) {
     console.log('ListItemsPopoverPage listItems', navParams.data.listItems);
     this.listItems = navParams.data.listItems;
   }
@@ -47,8 +47,27 @@ export class ListItemsPopoverPage {
   }
 
   deleteItem() {
-    console.log('you should implement deleteItem');
+    // console.log('you should implement deleteItem');
+    console.log('deleting', this.listItems);
+    // items is a table we created in model.json
+    // public delete(object: string, id: string) { <= from backandService.ts
+    this.backandService.delete('items', this.listItems.id)
+    // subscribe to response from the server so we are notified when the asynchronous result is available
+      .subscribe(
+          // 1st argument is function to run when the operation is a success
+          data => {
+              console.log('returned from delete', data);
+              //close the popover
+              this.close();
+          },
+          // 2nd argument is function to run when the operation fails
+          err => this.backandService.logError(err),
+          // 3rd operation is function to run when the observable is done (in
+          // this case the asynchronous operation is the observable)
+          () => console.log('OK')
+      );
   }
+
 }
 
 

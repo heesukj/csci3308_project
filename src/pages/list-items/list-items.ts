@@ -57,7 +57,18 @@ export class ListItemsPage {
                                             { listItems: listItems },
                                             { showBackdrop: true });
     popover.present();
+    // PopoverController: The onDidDismiss(<func>) function can be called to set up a callback action that will be performed
+    // after the popover is dismissed, receiving the parameter passed to dismiss().
+    popover.onDidDismiss(this.popoverDismissed.bind(this));
   }
+// popoverDismissed(callback) is defined here: when popover is closed
+  public popoverDismissed(listItems) {
+    // just refresh the list
+    // arguments = print every arguments that are passed (number of args doesn't matter) in javascript
+    console.log('popover dismissed called', arguments)
+    this.getItemsForList(this.groceryList.id);
+  }
+
 
 
 // define a getItemsForList function, passing a param 'groceryListId'
