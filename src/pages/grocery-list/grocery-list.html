@@ -7,11 +7,19 @@
 <ion-header >
 
   <ion-navbar>
-    <ion-title *ngFor="let user of loggedInUserInfo" >
-       <ion-buttons  end><span class="align-left"   >{{ user.firstName }} {{user.lastName}}'s Lists</span> <button ion-button icon-only (click)="add()"> <ion-icon name="md-add-circle"></ion-icon>
+    <div *ngFor="let user of loggedInUserInfo" >
+      <button ion-button menuToggle class= "ham" class="align-left"> 
+        <ion-icon name="menu"></ion-icon>
       </button>
-      </ion-buttons>
-      </ion-title>
+      <span class="vert" >
+        {{ user.firstName }} {{user.lastName}}'s Lists
+      </span> 
+      <span class="align-right">
+      <button ion-button outline small color="dark" (click)="add()"> 
+        <ion-icon name="add"></ion-icon>
+      </button>
+      </span>
+    </div>
     <!-- <button ion-button class='add-button' (click)="add()" color="light" round>
       <ion-icon name="md-add-circle"></ion-icon>
     </button>

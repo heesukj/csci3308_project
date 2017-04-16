@@ -11,7 +11,6 @@
 
   .add-list-button {
     float: right;
-    vertical-align: middle;
   }
 
   h3 {
@@ -21,10 +20,25 @@
   .title-block {
     // background-color: green;
   }
-
+.item .row, .item .col {
+  padding: 0;
+}
 }
 .align-left{
   float: left;
+}
+.align-right{
+  float:right;
+  padding: 0px; 
+}
+.vert{
+  vertical-align: bottom;
+  text-align: center;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 28px;
+}
+.ham{
+  color: #ffffff;
 }
 .page-grocery-list-content {
 
