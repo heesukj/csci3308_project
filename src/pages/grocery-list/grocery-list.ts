@@ -43,7 +43,7 @@ export class GroceryListPage {
   		groceryList: groceryList
   	});
   }
-
+//groceryList is passed as a navParam
   presentPopover(groceryList) {
     // console.log('presentPopover', groceryList);
     //http://ionicframework.com/docs/api/components/popover/PopoverController/
@@ -52,6 +52,24 @@ export class GroceryListPage {
                                          { groceryList: groceryList },
                                          { showBackdrop: true });
     popover.present();
+    // event is passing around.
+    // onDidDismiss (callback): when popover is dismissed, let me know by calling this.popoverDismissed
+    // 'this' registers a callback.  When popoever.dismiss() (close() function in grocery-list-popover.ts) is called,
+    // the popover will notify this class by calling this.popoverDismissed.
+    // So this.popoverDismissed is a callback for the popover.dismiss() event
+    // 'bind(this)'' binds this function to the current "this" CONTEXT (this class)
+
+    // we have to call 'bind() function on 'this' whenevery there is "on" like 'on'DidDismiss()
+    //that registers for callback (whenever a func deals with another func and/ an event register)
+    // 'this' in bind(this) refers to the current function (= presentPopover) that contains this bind() function.
+    popover.onDidDismiss(this.popoverDismissed.bind(this));
+  }
+// popoverDismissed(callback) is defined here: when popover is closed
+  public popoverDismissed(groceryList) {
+    // just refresh the list
+    // arguments = print every arguments that are passed (number of args doesn't matter) in javascript
+    console.log('popover dismissed called', arguments)
+    this.getGroceryList();
   }
 
   public getGroceryList() {
