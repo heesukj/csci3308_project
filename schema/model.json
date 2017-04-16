@@ -11,8 +11,9 @@
       "quantity": {
         "type": "string"
       },
-      "state": {
-        "type": "boolean"
+      "checkedOff": {
+        "type": "boolean",
+        "defaultValue": false
       }
     }
   },
@@ -44,8 +45,9 @@
       "name": {
         "type": "string"
       },
-      "state": {
-        "type": "boolean"
+      "completed": {
+        "type": "boolean",
+        "defaultValue": false
       },
       "user": {
         "object": "users"

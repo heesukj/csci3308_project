@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, PopoverController } from 'ionic-angular';
 import { BackandService } from '../../providers/backandService';
 // 3) nav setup
 import { ListItemsPage } from '../list-items/list-items';
+import { GroceryListPopoverPage } from '../grocery-list-popover/grocery-list-popover';
 /*
   Generated class for the GroceryList page.
 
@@ -23,7 +24,8 @@ export class GroceryListPage {
   public items:any[] = [];
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public backandService:BackandService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    public backandService:BackandService, public popoverCtrl: PopoverController) {
 
     this.searchQuery = '';
     this.getGroceryList();
@@ -64,9 +66,20 @@ export class GroceryListPage {
 // 2) nav setup: define a function 'listSelected' passing a param 'groceryList'
   listSelected(groceryList) {
   	//alert(item.text); instead 'alerting', we tell our navCtrl to push instances of our detail page into the navigation stack by conveiently assigning the constructor argument to the currrent instances of the class we are in, passing DetailPage
-  	this.navCtrl.push(ListItemsPage, {
+    //groceryList is set as a navParam in ListItemsPage
+    this.navCtrl.push(ListItemsPage, {
   		groceryList: groceryList
   	});
+  }
+
+  presentPopover(groceryList) {
+    // console.log('presentPopover', groceryList);
+    //http://ionicframework.com/docs/api/components/popover/PopoverController/
+    //groceryList is set as a navParam in GroceryListPopoverPage
+    let popover = this.popoverCtrl.create(GroceryListPopoverPage,
+                                         { groceryList: groceryList },
+                                         { showBackdrop: true });
+    popover.present();
   }
 
   public getGroceryList() {

@@ -32,8 +32,13 @@
 
 <!-- 1) nav setup: create a loop -> navigate each list to the corresponding list-items page
 when click a list.name (execute listSelected function which is defined in grocery-list.ts)  -->
+<!--  Gestures from http://ionicframework.com/docs/components/#fabs
+      press is long hold, > 500ms  (.5 seconds)
+      tap is short click, < 250ms  (.25 seconds)
+ -->
   <ion-list class="heesuk">
-      <button ion-item *ngFor="let groceryList of groceryLists" (click)="listSelected(groceryList)">
+      <button ion-item *ngFor="let groceryList of groceryLists"
+              (press)="presentPopover(groceryList)" (tap)="listSelected(groceryList)">
         <h2>{{ groceryList.name }}</h2>
         <!-- <p>{{ item.state }}</p> -->
         <!-- <p>{{ item.user }}</p> -->

@@ -6,16 +6,17 @@ import { NavController, NavParams } from 'ionic-angular';
 import { StartPage } from '../start/start';
 import { GroceryListPage } from '../grocery-list/grocery-list';
 import { SignupPage } from '../signup/signup';
+
 @Component({
     templateUrl: 'login.html',
     selector: 'page-login',
 })
 export class LoginPage {
 
-    // username:string = 'heesuk@gmail.com';
-    // password:string = 'zxcvb123';
     username:string = '';
     password:string = '';
+    // username:string = 'heesuk@gmail.com';
+    // password:string = 'zxcvb123';
     auth_type:string = "N/A";
     is_auth_error:boolean = false;
     auth_status:string = null;
@@ -83,9 +84,8 @@ export class LoginPage {
             },
             () => console.log('Finish change password'));
     }
-
-    public gotoSignUp() {
-    this.navCtrl.push(SignupPage);
-  }
+    public gotoSignUp(){
+        this.navCtrl.push(SignupPage);
+    }
 
 }
