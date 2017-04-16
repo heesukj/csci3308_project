@@ -18,10 +18,14 @@ export class ListItemsPage {
 // items in array with a type 'any'
   items:any[] = [];
   searchQuery: string;
+ 
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public backandService:BackandService) {
     this.groceryList = navParams.get('groceryList');
     this.searchQuery = '';
+    this.backandService.getUsername();
+
 
     // this.backandService.on("items_updated")
     //     .subscribe(

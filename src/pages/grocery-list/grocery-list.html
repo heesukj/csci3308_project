@@ -4,23 +4,24 @@
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header class="page-grocery-list-header">
+<ion-header >
 
   <ion-navbar>
-    <ion-title class="title-block"><h3 class="title-text">My Lists</h3></ion-title>
+    <ion-title *ngFor="let user of loggedInUserInfo" >
+       <ion-buttons  end><span class="align-left"   >{{ user.firstName }} {{user.lastName}}'s Lists</span> <button ion-button icon-only (click)="add()"> <ion-icon name="md-add-circle"></ion-icon>
+      </button>
+      </ion-buttons>
+      </ion-title>
     <!-- <button ion-button class='add-button' (click)="add()" color="light" round>
       <ion-icon name="md-add-circle"></ion-icon>
     </button>
   Create a button for '+' : when click this button, execute add() function: defined it in grocery-list.ts -->
-    <button ion-button icon-only icon-right clear class="add-list-button" (click)="add()">
-      <ion-icon name="md-add-circle"></ion-icon>
-    </button>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding class="page-grocery-list-content">
+<ion-content class="content-text" class="page-grocery-list-content">
   <!-- <h2>Grocery List</h2> -->
 
   <!-- Create a 'searchBar' -->

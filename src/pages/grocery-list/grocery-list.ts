@@ -17,11 +17,39 @@ export class GroceryListPage {
   // declare groceryLists in array with a type 'any'
   groceryLists: any[] = [];
   searchQuery: string;
+  // User's Name for Display at header
+  loggedInUser: string = '';
+  loggedInUserInfo: any[] = [];
+  public items:any[] = [];
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public backandService:BackandService) {
 
     this.searchQuery = '';
     this.getGroceryList();
+    this.loggedInUser = this.backandService.getUsername();
+    
+    let filter =
+          [
+            {
+              fieldName: 'email',
+              operator: 'contains',
+              value: this.loggedInUser
+            }
+          ]
+      ;
+
+
+      this.backandService.getList('users', null, null, filter)
+          .subscribe(
+              data => {
+                  console.log("subscribe", data);
+                  this.loggedInUserInfo = data;
+              },
+              err => this.backandService.logError(err),
+              () => console.log('OK')
+          );
+
   }
 
   ionViewDidLoad() {
@@ -86,5 +114,16 @@ export class GroceryListPage {
               () => console.log('OK')
           );
   }
-
+   public getItems() {
+       this.backandService.getList('users')
+            .subscribe(
+                data => {
+                    console.log(data);
+                    this.items = data;
+                    this.loggedInUser = data.firstName;
+                },
+                err => this.backandService.logError(err),
+                () => console.log('OK')
+            );
+    }
 }

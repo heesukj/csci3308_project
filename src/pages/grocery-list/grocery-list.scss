@@ -1,11 +1,17 @@
 .page-grocery-list-header {
 
   .title-text {
-    margin-top: 25px;
+    margin-top: 50px;
+    margin-bottom: 0px;
+  }
+
+  .content-text{
+    margin-top: 100px;
   }
 
   .add-list-button {
     float: right;
+    vertical-align: middle;
   }
 
   h3 {
@@ -17,7 +23,9 @@
   }
 
 }
-
+.align-left{
+  float: left;
+}
 .page-grocery-list-content {
 
   .heesuk {
