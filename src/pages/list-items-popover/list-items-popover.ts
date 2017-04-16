@@ -34,10 +34,6 @@ export class ListItemsPopoverPage {
     console.log('you should implement rename');
   }
 
-  checkOffItem() {
-    console.log('you should implement checkOffItem');
-  }
-
   editQuantity() {
     console.log('you should implement editQuantity');
   }

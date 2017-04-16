@@ -3,17 +3,25 @@
 
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
--->
-<ion-header>
+everything we Generated
+inline element like span:
+div: a block element, only thing in the line
+block vs inline-->
+<ion-header class="page-list-items-header">
 
   <ion-navbar>
-    <ion-title>{{ groceryList.name }}</ion-title>
+    <ion-title class="heesuk">{{ groceryList.name }}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding class="page-list-items">
+
+  <!-- <div>Iam a div</div>
+  <h1 class="heesuk">This is an H1</h1>
+  <span>span1</span> span: right next to each other
+  <span class="heesuk">span2</span> -->
 
   <!-- <button ion-button (click)="getItemsForList(groceryList.id)">Refresh List</button> -->
 
@@ -23,13 +31,23 @@
   </ion-searchbar>
 
   <ion-list>
-      <ion-item *ngFor="let item of items"
-        (press)="presentPopover(item)">
+    <!--  ngClass conditionally apply a class. in this case if item.checkedOff is true then add
+          the is-checked class-->
+      <ion-item *ngFor="let item of items" (tap)="checkOffItem(item)"
+        (press)="presentPopover(item)" [ngClass]="{'is-checked': item.checkedOff}">
+<!-- block components: set to inline or float them .css code
+margin: space between span inline-->
+        <h2 class="float-left">{{ item.name }} </h2>
+        <p class="float-right">
+          <span class="right-margin">{{ item.quantity }}</span>
+          <!-- in js, use === for boolean (not ==) that have the same type on both left and right operation
+            "1" == 1 //this is true in js (regardless of different types)
+            "1" === 1 //this is false in js since it is comparing a string and an int
+         -->
+         <!-- https://forum.ionicframework.com/t/using-ngif-to-filter-ion-slides-created-by-ngfor/39780 -->
+          <ion-icon *ngIf="item.checkedOff === true" ios="ios-checkmark" md="md-checkmark"></ion-icon>
+        </p>
 
-        <h2>{{ item.name }} </h2>
-        <!-- <p>{{ item.description }}</p> -->
-        <p>{{ item.quantity }}</p>
-        <!-- <p>{{ item.sate }}</p> -->
       </ion-item>
   </ion-list>
 
