@@ -17,28 +17,20 @@ import { Events } from 'ionic-angular';
   templateUrl: 'grocery-list-popover.html'
 })
 export class GroceryListPopoverPage {
-
+//groceryList is provided in the navParams
   groceryList: any;
   change: string; '';
   object: string; '';
-
-
 
   constructor(public viewCtrl: ViewController, public navParams: NavParams,public backandService:BackandService, private alertCtrl: AlertController, public events: Events) {
     console.log('GroceryListPopoverPage groceryList', navParams.data.groceryList);
     this.groceryList = navParams.data.groceryList;
     this.object = 'grocery_list';
-
-    
   }
 
-  // ionViewDidLoad() {
-  //   console.log('ionViewDidLoad GroceryListPopoverPage');
-  //
-  // }
   presentPrompt() {
-  
-}
+
+  }
 
   close() {
     this.viewCtrl.dismiss();
@@ -92,7 +84,6 @@ export class GroceryListPopoverPage {
     console.log('you should implement share');
   }
 
- // public delete(object: string, id: string) {
   delete() {
     console.log('deleting', this.groceryList);
     // grocery_list is a table we created in model.json
@@ -104,7 +95,7 @@ export class GroceryListPopoverPage {
               console.log('returned from delete', data);
               //close the popover
               this.close();
-              this.events.publish('finished',data);
+              this.events.publish('finished', data);
           },
           // 2nd argument is function to run when the operation fails
           err => this.backandService.logError(err),
@@ -112,7 +103,5 @@ export class GroceryListPopoverPage {
           // this case the asynchronous operation is the observable)
           () => console.log('OK')
       );
-      
   }
 }
-

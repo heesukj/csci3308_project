@@ -1,13 +1,56 @@
-page-list-items {
+// cascading style sheet
+.page-list-items-header {
+// defined in ionic somewhere: built-in class and I am redefining the background color
+// whatever style you set in this built-in class, it will overwrite the existing style defined by ionic
+  .toolbar-background {
+    // background-image: url(http://www.theloop.ca/wp-content/uploads/2015/02/grocery-shopping.jpg);
+    // background-color: teal;
+    //https://www.w3schools.com/cssref/css_colors.asp
+    // background-color: lightgreen ;
+  }
+  .toolbar-title {
+    color: black;
+  }
+
+  .vert{
+    vertical-align: bottom;
+    text-align: center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 28px;
+  }
+
+  .align-right{
+    float:right;
+    padding: 0px;
+  }
 
 }
-.vert{
-  vertical-align: bottom;
-  text-align: center;
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-  font-size: 28px;
-}
-.align-right{
-  float:right;
-  padding: 0px; 
+
+.page-list-items {
+
+  .is-checked {
+    background-color: #e2e2e2;
+  }
+
+  .float-left {
+    float: left;
+  }
+
+// defining a class in .css here is starting with . and var name
+//
+// .heesuk {
+//   background-color: green;
+//   //text color
+//   color: white;
+//   border: 5px solid purple;
+//
+// }
+
+  .right-margin {
+    margin-right: 15px;
+  }
+
+  .float-right {
+    float: right;
+  }
 }
