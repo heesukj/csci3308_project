@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, PopoverController } from 'ionic-angular';
 import {BackandService} from '../../providers/backandService';
 import {ListItemsPopoverPage} from '../list-items-popover/list-items-popover';
+import {AlertController} from 'ionic-angular';
+
 /*
   Generated class for the ListItems page.
 
@@ -18,14 +20,16 @@ export class ListItemsPage {
 // items in array with a type 'any'
   items:any[] = [];
   searchQuery: string;
+  userinfo: any;
  
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    public backandService:BackandService, public popoverCtrl:PopoverController) {
+    public backandService:BackandService, public popoverCtrl:PopoverController, private alertCtrl: AlertController) {
     this.groceryList = navParams.get('groceryList');
     this.searchQuery = '';
-    this.backandService.getUsername();
+    this.userinfo = this.backandService.getUsername();
+    console.log(this.groceryList)
 
 
     // this.backandService.on("items_updated")
@@ -113,5 +117,55 @@ export class ListItemsPage {
               err => this.backandService.logError(err),
               () => console.log('OK')
           );
+  }
+  public add()
+  {
+   let alert = this.alertCtrl.create({
+    title: 'Create A New List',
+    inputs: [
+      {
+        name: 'item',
+        placeholder: 'Item Name'
+      },
+      {
+        name: 'quantity',
+        placeholder: 'Item Quantity',
+      }
+    ],
+    buttons: [
+      {
+        text: 'Cancel',
+        role: 'cancel',
+        handler: data => {
+          console.log('Cancel clicked');
+        }
+      },
+      {
+        text: 'Create!', 
+        handler: data =>{
+        let creation =
+      [
+        {
+          list: this.groceryList.id,
+          name: data.item,
+          id: '',
+          quantity: data.quantity,
+          checkedOff: false
+        }
+      ];
+          console.log(creation);
+          this.backandService.create('items', creation)
+            .subscribe(
+              data => {
+                console.log('Returned from create', data);
+
+              },
+              err => this.backandService.logError(err),
+            );
+        }
+      }
+    ]
+  });
+  alert.present();
   }
 }

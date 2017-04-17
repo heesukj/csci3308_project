@@ -7,7 +7,12 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{ groceryList.name }}</ion-title>
+    <span class="vert">{{ groceryList.name }}</span>
+    <span class="align-right">
+    <button ion-button outline small color="dark" (click)="add()"> 
+        <ion-icon name="add"></ion-icon>
+    </button>
+    </span>
   </ion-navbar>
 
 </ion-header>

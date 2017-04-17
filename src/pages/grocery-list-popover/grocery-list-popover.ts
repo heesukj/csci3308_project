@@ -63,13 +63,8 @@ export class GroceryListPopoverPage {
         text: 'Rename',
         handler: data =>{
           this.change = data.newName;
-          console.log(this.change);
-          console.log(this.object);
-          console.log(this.groceryList.id);
           this.delete();
           this.groceryList.name = this.change;
-          console.log(this.groceryList.name);
-          console.log(this.groceryList);
           // grocery_list is a table we created in model.json
           this.backandService.create('grocery_list', this.groceryList)
             .subscribe(
@@ -114,6 +109,7 @@ export class GroceryListPopoverPage {
           // this case the asynchronous operation is the observable)
           () => console.log('OK')
       );
+      
   }
 }
 

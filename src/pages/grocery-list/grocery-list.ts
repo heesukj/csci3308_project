@@ -105,13 +105,13 @@ export class GroceryListPage {
 
         }
       ];
-          console.log(creation);
           this.loggedInUserInfo;
           // grocery_list is a table we created in model.json
           this.backandService.create('grocery_list', creation)
             .subscribe(
               data => {
                 console.log('Returned from create', data);
+                this.getGroceryList();
               },
               err => this.backandService.logError(err),
             );
@@ -139,6 +139,7 @@ export class GroceryListPage {
                                          { groceryList: groceryList },
                                          { showBackdrop: true });
     popover.present();
+
   }
 
   public getGroceryList() {
