@@ -3,8 +3,6 @@ import { ViewController, NavParams } from 'ionic-angular';
 import {AlertController} from 'ionic-angular';
 import { BackandService } from '../../providers/backandService';
 
-
-
 /*
   Generated class for the GroceryListPopover page.
 
@@ -16,7 +14,7 @@ import { BackandService } from '../../providers/backandService';
   templateUrl: 'list-items-popover.html'
 })
 export class ListItemsPopoverPage {
-
+//listItems is provided in the navParams
   listItems: any;
   iteminfo: any;
 
@@ -35,7 +33,7 @@ export class ListItemsPopoverPage {
     this.viewCtrl.dismiss();
   }
 
-  renameItem() {
+  rename() {
     let alert = this.alertCtrl.create({
     title: 'Rename Item',
     inputs: [
@@ -76,10 +74,6 @@ export class ListItemsPopoverPage {
   this.viewCtrl.dismiss();
   }
 
-  checkOffItem() {
-    console.log('you should implement checkOffItem');
-  }
-
   editQuantity() {
     console.log('you should implement editQuantity');
   }
@@ -109,37 +103,5 @@ export class ListItemsPopoverPage {
           () => console.log('OK')
       );
   }
+
 }
-
-
-
-
-
-
-
-
-
-
-
-// import { Component } from '@angular/core';
-// import { NavController, NavParams } from 'ionic-angular';
-//
-// /*
-//   Generated class for the ListItemsPopover page.
-//
-//   See http://ionicframework.com/docs/v2/components/#navigation for more info on
-//   Ionic pages and navigation.
-// */
-// @Component({
-//   selector: 'page-list-items-popover',
-//   templateUrl: 'list-items-popover.html'
-// })
-// export class ListItemsPopoverPage {
-//
-//   constructor(public navCtrl: NavController, public navParams: NavParams) {}
-//
-//   ionViewDidLoad() {
-//     console.log('ionViewDidLoad ListItemsPopoverPage');
-//   }
-//
-// }

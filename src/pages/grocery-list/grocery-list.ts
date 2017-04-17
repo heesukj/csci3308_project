@@ -7,7 +7,6 @@ import { GroceryListPopoverPage } from '../grocery-list-popover/grocery-list-pop
 import {AlertController} from 'ionic-angular';
 import { Events } from 'ionic-angular';
 
-
 /*
   Generated class for the GroceryList page.
 
@@ -94,7 +93,7 @@ export class GroceryListPage {
         }
       },
       {
-        text: 'Create!', 
+        text: 'OK',
         handler: data =>{
         let creation =
       [
@@ -132,7 +131,7 @@ export class GroceryListPage {
   		groceryList: groceryList
   	});
   }
-
+//groceryList is passed as a navParam
   presentPopover(groceryList) {
     // console.log('presentPopover', groceryList);
     //http://ionicframework.com/docs/api/components/popover/PopoverController/
