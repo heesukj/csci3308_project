@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { ViewController, NavParams } from 'ionic-angular';
 import {AlertController} from 'ionic-angular';
 import { BackandService } from '../../providers/backandService';
+import { Events } from 'ionic-angular';
+
 
 /*
   Generated class for the GroceryListPopover page.
@@ -18,7 +20,7 @@ export class ListItemsPopoverPage {
   listItems: any;
   iteminfo: any;
 
-  constructor(public viewCtrl: ViewController, public navParams: NavParams, private alertCtrl: AlertController, public backandService:BackandService) {
+  constructor(public viewCtrl: ViewController, public navParams: NavParams, private alertCtrl: AlertController, public backandService:BackandService, public events: Events) {
     console.log('ListItemsPopoverPage listItems', navParams.data.listItems);
     this.listItems = navParams.data.listItems;
   }
@@ -53,15 +55,24 @@ export class ListItemsPopoverPage {
       {
         text: 'Rename',
         handler: data =>{
-          this.iteminfo = data.newName;
+          let newitem =
+          [
+            {
+              list: this.listItems.list.id,
+              name: data.newName,
+              id: this.listItems.id,
+              quantity: this.listItems.quantity,
+              checkedoff: this.listItems.checkedoff,
+            }
+          ]
+      ;
           this.deleteItem();
-          this.listItems.name;
-          console.log(this.listItems);
           // grocery_list is a table we created in model.json
-          this.backandService.create('item', this.listItems)
+          this.backandService.create('items', newitem)
             .subscribe(
               data => {
                 console.log('Returned from create', data);
+                this.events.publish('finished', data);
               },
               err => this.backandService.logError(err),
               () => console.log('OK')
@@ -75,7 +86,53 @@ export class ListItemsPopoverPage {
   }
 
   editQuantity() {
-    console.log('you should implement editQuantity');
+    let alert = this.alertCtrl.create({
+    title: 'Change Quantity',
+    inputs: [
+      {
+        name: 'newName',
+        placeholder: ''
+      }
+    ],
+    buttons: [
+      {
+        text: 'Cancel',
+        role: 'cancel',
+        handler: data => {
+          console.log('Cancel clicked');
+        }
+      },
+      {
+        text: 'Rename',
+        handler: data =>{
+          let newitem =
+          [
+            {
+              list: this.listItems.list.id,
+              name: this.listItems.name,
+              id: this.listItems.id,
+              quantity: data.newName,
+              checkedoff: this.listItems.checkedoff,
+            }
+          ]
+      ;
+          this.deleteItem();
+          // grocery_list is a table we created in model.json
+          this.backandService.create('items', newitem)
+            .subscribe(
+              data => {
+                console.log('Returned from create', data);
+                this.events.publish('finished', data);
+              },
+              err => this.backandService.logError(err),
+              () => console.log('OK')
+            );
+        }
+      }
+    ]
+  });
+  alert.present();
+  this.viewCtrl.dismiss();
   }
 
   addNotification() {

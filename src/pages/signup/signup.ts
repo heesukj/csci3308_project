@@ -33,6 +33,7 @@ export class SignupPage {
       alert('Passwords should match');
       return;
     }
+    else{
     var $obs = this.backandService.signup(this.email, this.signUpPassword, this.confirmPassword, this.firstName, this.lastName);
     $obs.subscribe(
       data => {
@@ -47,6 +48,7 @@ export class SignupPage {
           // this.backandService.logError(err)
       },
       () => console.log('Finish Auth'));
+    }
   }
 
   public socialSignin(provider) {

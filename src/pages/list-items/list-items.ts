@@ -3,6 +3,8 @@ import { NavController, NavParams, PopoverController } from 'ionic-angular';
 import {BackandService} from '../../providers/backandService';
 import {ListItemsPopoverPage} from '../list-items-popover/list-items-popover';
 import {AlertController} from 'ionic-angular';
+import { Events } from 'ionic-angular';
+
 
 /*
   Generated class for the ListItems page.
@@ -24,7 +26,7 @@ export class ListItemsPage {
   iteminfo: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-  public backandService:BackandService, public popoverCtrl:PopoverController, private alertCtrl: AlertController) {
+  public backandService:BackandService, public popoverCtrl:PopoverController, private alertCtrl: AlertController, public events: Events) {
     this.groceryList = navParams.get('groceryList');
     this.searchQuery = '';
     this.userinfo = this.backandService.getUsername();
@@ -66,6 +68,11 @@ export class ListItemsPage {
     // PopoverController: The onDidDismiss(<func>) function can be called to set up a callback action that will be performed
     // after the popover is dismissed, receiving the parameter passed to dismiss().
     popover.onDidDismiss(this.popoverDismissed.bind(this));
+        this.events.subscribe('finished',data =>
+    {
+        this.getItemsForList(this.groceryList.id);
+    }
+  );
   }
 // popoverDismissed(callback) is defined here: when popover is closed
   public popoverDismissed(listItems) {
