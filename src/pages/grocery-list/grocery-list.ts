@@ -4,6 +4,8 @@ import { BackandService } from '../../providers/backandService';
 // 3) nav setup
 import { ListItemsPage } from '../list-items/list-items';
 import { GroceryListPopoverPage } from '../grocery-list-popover/grocery-list-popover';
+import {AlertController} from 'ionic-angular';
+
 /*
   Generated class for the GroceryList page.
 
@@ -20,17 +22,17 @@ export class GroceryListPage {
   searchQuery: string;
   // User's Name for Display at header
   loggedInUser: string = '';
-  loggedInUserInfo: any[] = [];
+  public loggedInUserInfo: any;
   public items:any[] = [];
-
+  create: string; '';
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    public backandService:BackandService, public popoverCtrl: PopoverController) {
+    public backandService:BackandService, public popoverCtrl: PopoverController, private alertCtrl: AlertController) {
 
     this.searchQuery = '';
     this.getGroceryList();
     this.loggedInUser = this.backandService.getUsername();
-    
+
     let filter =
           [
             {
@@ -45,13 +47,12 @@ export class GroceryListPage {
       this.backandService.getList('users', null, null, filter)
           .subscribe(
               data => {
-                  console.log("subscribe", data);
                   this.loggedInUserInfo = data;
+                  this.create = this.loggedInUserInfo.id;
+                  console.log(this.create);
               },
               err => this.backandService.logError(err),
-              () => console.log('OK')
           );
-
   }
 
   ionViewDidLoad() {
@@ -60,7 +61,65 @@ export class GroceryListPage {
 
 // define add() = (+: button) function here
   public add() {
-    console.log('you should implement add');
+     let creation =
+      [
+        {
+          id: '',
+          items: null,
+          name: 'name',
+          completed: null,
+          user: this.loggedInUserInfo[0].id
+
+        }
+      ];
+      console.log(creation);
+
+
+   let alert = this.alertCtrl.create({
+    title: 'Create A New List',
+    inputs: [
+      {
+        name: 'ListName',
+        placeholder: 'List Name'
+      }
+    ],
+    buttons: [
+      {
+        text: 'Cancel',
+        role: 'cancel',
+        handler: data => {
+          console.log('Cancel clicked');
+        }
+      },
+      {
+        text: 'Create!', 
+        handler: data =>{
+        let creation =
+      [
+        {
+          id: '',
+          items: null,
+          name: data.ListName,
+          completed: null,
+          user: this.loggedInUserInfo[0].id
+
+        }
+      ];
+          console.log(creation);
+          this.loggedInUserInfo;
+          // grocery_list is a table we created in model.json
+          this.backandService.create('grocery_list', creation)
+            .subscribe(
+              data => {
+                console.log('Returned from create', data);
+              },
+              err => this.backandService.logError(err),
+            );
+        }
+      }
+    ]
+  });
+  alert.present();
   }
 
 // 2) nav setup: define a function 'listSelected' passing a param 'groceryList'
@@ -86,11 +145,10 @@ export class GroceryListPage {
      this.backandService.getList('grocery_list')
           .subscribe(
               data => {
-                  console.log(data);
                   this.groceryLists = data;
+                  console.log(this.groceryLists);
               },
               err => this.backandService.logError(err),
-              () => console.log('OK')
           );
   }
 
