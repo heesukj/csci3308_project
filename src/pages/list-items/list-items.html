@@ -10,20 +10,16 @@ block vs inline-->
 <ion-header class="page-list-items-header">
 
   <ion-navbar>
-    <ion-title class="heesuk">{{ groceryList.name }}</ion-title>
+    <span class="vert">{{ groceryList.name }}</span>
+    <span class="align-right">
+    <button ion-button outline small color="dark" (click)="add()">
+        <ion-icon name="add"></ion-icon>
+    </button>
+    </span>
   </ion-navbar>
-
 </ion-header>
 
-
 <ion-content padding class="page-list-items">
-
-  <!-- <div>Iam a div</div>
-  <h1 class="heesuk">This is an H1</h1>
-  <span>span1</span> span: right next to each other
-  <span class="heesuk">span2</span> -->
-
-  <!-- <button ion-button (click)="getItemsForList(groceryList.id)">Refresh List</button> -->
 
   <ion-searchbar
     [(ngModel)]="searchQuery"

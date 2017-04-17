@@ -447,6 +447,8 @@ export class BackandService {
 
     public create(object: string, item: any, deep: boolean = false, returnObject: boolean = false) {
         let data: string = JSON.stringify(item);
+        console.log(data);
+        console.log(item);
         let query: string = '';
         if (returnObject){
             query += 'returnObject=true';
@@ -558,6 +560,7 @@ export class BackandService {
 
     public delete(object: string, id: string) {
         let headers = this.authHeader;
+        console.log("Hello");
         headers.append('Content-Type', 'application/json');
         return this.http.delete(
             this.api_url + '/1/objects/' + object + '/' + id,

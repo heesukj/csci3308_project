@@ -5,6 +5,8 @@ import {BackandService} from '../../providers/backandService'
 import { NavController, NavParams } from 'ionic-angular';
 import { StartPage } from '../start/start';
 import { GroceryListPage } from '../grocery-list/grocery-list';
+import { SignupPage } from '../signup/signup';
+
 @Component({
     templateUrl: 'login.html',
     selector: 'page-login',
@@ -82,6 +84,8 @@ export class LoginPage {
             },
             () => console.log('Finish change password'));
     }
-
+    public gotoSignUp(){
+        this.navCtrl.push(SignupPage);
+    }
 
 }

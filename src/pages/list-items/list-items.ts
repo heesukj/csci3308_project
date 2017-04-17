@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, PopoverController } from 'ionic-angular';
 import {BackandService} from '../../providers/backandService';
 import {ListItemsPopoverPage} from '../list-items-popover/list-items-popover';
+import {AlertController} from 'ionic-angular';
+
 /*
   Generated class for the ListItems page.
 
@@ -18,11 +20,15 @@ export class ListItemsPage {
 // items in array with a type 'any'
   items:any[] = [];
   searchQuery: string;
+  userinfo: any;
+  iteminfo: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    public backandService:BackandService, public popoverCtrl:PopoverController) {
+  public backandService:BackandService, public popoverCtrl:PopoverController, private alertCtrl: AlertController) {
     this.groceryList = navParams.get('groceryList');
     this.searchQuery = '';
+    this.userinfo = this.backandService.getUsername();
+    console.log(this.groceryList)
 
     // this.backandService.on("items_updated")
     //     .subscribe(
@@ -79,9 +85,10 @@ export class ListItemsPage {
 
     //toggle the value of checkedOff.  so if it is false set to true,
     //if it is true set it to false
+    // we need to update this state (boolean) before calling update() function
     item.checkedOff = !item.checkedOff;
 
-//post() (HTTP method call) = update(object: string, id: string, item: any, deep: boolean = false, returnObject: boolean = false)
+// post() (HTTP method call) = update(object: string, id: string, item: any, deep: boolean = false, returnObject: boolean = false)
 // set deep = false: means "no need to check parent-child relationship for [foreign-key reference]"
 // since we are doing simply checkedOff (true/false) condition
 // set returnObject = true: means we ask to return the item(whole object) back to us
@@ -153,4 +160,57 @@ export class ListItemsPage {
               () => console.log('OK')
           );
   }
+
+  public add()
+  {
+     let alert = this.alertCtrl.create({
+       title: 'Add an Item',
+       inputs: [
+        {
+          name: 'item',
+          placeholder: 'Item Name'
+        },
+        {
+          name: 'quantity',
+          placeholder: 'Item Quantity',
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'OK',
+          handler: data => {
+            let creation =
+            [
+              {
+                list: this.groceryList.id,
+                name: data.item,
+                id: '',
+                quantity: data.quantity,
+                checkedOff: false
+              }
+            ];
+            console.log(creation);
+            this.backandService.create('items', creation)
+              .subscribe(
+                  data => {
+                    console.log('Returned from create', data);
+                    this.getItemsForList(this.groceryList.id);
+
+                  },
+                  err => this.backandService.logError(err)
+                );
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
+  
 }

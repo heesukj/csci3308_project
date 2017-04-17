@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
-import { ViewController, NavParams } from 'ionic-angular';
+import {AlertController} from 'ionic-angular';
 import { BackandService } from '../../providers/backandService';
+import { NavController, NavParams, PopoverController, ViewController } from 'ionic-angular';
+// 3) nav setup
+import { ListItemsPage } from '../list-items/list-items';
+import { Events } from 'ionic-angular';
 
 /*
   Generated class for the GroceryListPopover page.
@@ -15,23 +19,61 @@ import { BackandService } from '../../providers/backandService';
 export class GroceryListPopoverPage {
 //groceryList is provided in the navParams
   groceryList: any;
+  change: string; '';
+  object: string; '';
 
-  constructor(public viewCtrl: ViewController, public navParams: NavParams, public backandService:BackandService) {
+  constructor(public viewCtrl: ViewController, public navParams: NavParams,public backandService:BackandService, private alertCtrl: AlertController, public events: Events) {
     console.log('GroceryListPopoverPage groceryList', navParams.data.groceryList);
     this.groceryList = navParams.data.groceryList;
+    this.object = 'grocery_list';
   }
 
-  // ionViewDidLoad() {
-  //   console.log('ionViewDidLoad GroceryListPopoverPage');
-  //
-  // }
+  presentPrompt() {
+
+  }
 
   close() {
     this.viewCtrl.dismiss();
   }
 
   rename() {
-    console.log('you should implement rename');
+    let alert = this.alertCtrl.create({
+    title: 'New List Name',
+    inputs: [
+      {
+        name: 'newName',
+        placeholder: ''
+      }
+    ],
+    buttons: [
+      {
+        text: 'Cancel',
+        role: 'cancel',
+        handler: data => {
+          console.log('Cancel clicked');
+        }
+      },
+      {
+        text: 'Rename',
+        handler: data =>{
+          this.change = data.newName;
+          this.delete();
+          this.groceryList.name = this.change;
+          // grocery_list is a table we created in model.json
+          this.backandService.create('grocery_list', this.groceryList)
+            .subscribe(
+              data => {
+                console.log('Returned from create', data);
+              },
+              err => this.backandService.logError(err),
+              () => console.log('OK')
+            );
+        }
+      }
+    ]
+  });
+  alert.present();
+  this.viewCtrl.dismiss();
   }
 
   addReminder() {
@@ -41,7 +83,7 @@ export class GroceryListPopoverPage {
   share() {
     console.log('you should implement share');
   }
-// public delete(object: string, id: string) {
+
   delete() {
     console.log('deleting', this.groceryList);
     // grocery_list is a table we created in model.json
@@ -53,6 +95,7 @@ export class GroceryListPopoverPage {
               console.log('returned from delete', data);
               //close the popover
               this.close();
+              this.events.publish('finished', data);
           },
           // 2nd argument is function to run when the operation fails
           err => this.backandService.logError(err),

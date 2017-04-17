@@ -4,7 +4,7 @@
       <img  src= "assets/images/logo.png" class="center-image" class="padding" class="size" >
   </div>
   <header text-center>
-      <h1>Grocery With Me</h1>
+      <img  src= "assets/images/name.png" >
   </header>
   <div text-center class="lato">
     The best way to organize your shopping needs.
@@ -33,12 +33,15 @@
         </ion-item>
 
     </ion-list>
+    
+    <div text-center class='font-size'>
+        <button ion-button round class="button-size" (click)="getAuthTokenSimple()" color="success">Login</button>
+    </div>
+    <div text-center>
+     <button ion-button round outline (click)="gotoSignUp()" color="success" class='smallButton' class="invis">Need to Sign Up?</button>
+    </div>
 
-    <button ion-button (click)="getAuthTokenSimple()" color="success">Login</button>
-    <h3 class='font-size'>Need to Sign Up?  <button ion-button (click)="gotoSignUp()" color="success" class='smallButton' class="invis">Sign Up!</button>
-    </h3>
- 
-
+    <!-- <button ion-button (click)="gotoSignUp()" color="success" class="buttonCenter" class="button-font" class="buttonStyle" text-center>Return</button> -->  
     <!-- <button ion-button (click)="useAnonymousAuth()" color="danger">Anonymous Auth</button> -->
     <!-- <br/>
     <label>Using {{auth_type}} authentication</label>

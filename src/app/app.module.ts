@@ -14,11 +14,6 @@ import { ListItemsPopoverPage } from '../pages/list-items-popover/list-items-pop
 
 import { CloudSettings, CloudModule } from '@ionic/cloud-angular';
 
-const cloudSettings: CloudSettings = {
-  'core': {
-    'app_id': 'a1aa4b64'
-  }
-};
 
 @NgModule({
   declarations: [
