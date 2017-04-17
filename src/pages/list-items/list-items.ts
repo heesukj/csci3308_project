@@ -21,6 +21,7 @@ export class ListItemsPage {
   items:any[] = [];
   searchQuery: string;
   userinfo: any;
+  iteminfo: any;
  
 
 
@@ -158,6 +159,7 @@ export class ListItemsPage {
             .subscribe(
               data => {
                 console.log('Returned from create', data);
+                this.getItemsForList(this.groceryList.id);
 
               },
               err => this.backandService.logError(err),
@@ -167,5 +169,6 @@ export class ListItemsPage {
     ]
   });
   alert.present();
-  }
+}
+
 }

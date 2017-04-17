@@ -5,6 +5,8 @@ import { BackandService } from '../../providers/backandService';
 import { ListItemsPage } from '../list-items/list-items';
 import { GroceryListPopoverPage } from '../grocery-list-popover/grocery-list-popover';
 import {AlertController} from 'ionic-angular';
+import { Events } from 'ionic-angular';
+
 
 /*
   Generated class for the GroceryList page.
@@ -27,7 +29,7 @@ export class GroceryListPage {
   create: string; '';
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    public backandService:BackandService, public popoverCtrl: PopoverController, private alertCtrl: AlertController) {
+    public backandService:BackandService, public popoverCtrl: PopoverController, private alertCtrl: AlertController, public events: Events) {
 
     this.searchQuery = '';
     this.getGroceryList();
@@ -139,8 +141,12 @@ export class GroceryListPage {
                                          { groceryList: groceryList },
                                          { showBackdrop: true });
     popover.present();
-
-  }
+    this.events.subscribe('finished',data =>
+    {
+          this.getGroceryList();
+    }
+  );
+}
 
   public getGroceryList() {
      this.backandService.getList('grocery_list')

@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { ViewController, NavParams } from 'ionic-angular';
+import {AlertController} from 'ionic-angular';
+import { BackandService } from '../../providers/backandService';
+
+
 
 /*
   Generated class for the GroceryListPopover page.
@@ -14,8 +18,9 @@ import { ViewController, NavParams } from 'ionic-angular';
 export class ListItemsPopoverPage {
 
   listItems: any;
+  iteminfo: any;
 
-  constructor(public viewCtrl: ViewController, public navParams: NavParams) {
+  constructor(public viewCtrl: ViewController, public navParams: NavParams, private alertCtrl: AlertController, public backandService:BackandService) {
     console.log('ListItemsPopoverPage listItems', navParams.data.listItems);
     this.listItems = navParams.data.listItems;
   }
@@ -31,7 +36,43 @@ export class ListItemsPopoverPage {
   }
 
   rename() {
-    console.log('you should implement rename');
+    let alert = this.alertCtrl.create({
+    title: 'Rename Item',
+    inputs: [
+      {
+        name: 'newName',
+        placeholder: ''
+      }
+    ],
+    buttons: [
+      {
+        text: 'Cancel',
+        role: 'cancel',
+        handler: data => {
+          console.log('Cancel clicked');
+        }
+      },
+      {
+        text: 'Rename',
+        handler: data =>{
+          this.iteminfo = data.newName;
+          //this.delete();
+          this.listItems.name;
+          console.log(this.listItems);
+          // grocery_list is a table we created in model.json
+          this.backandService.create('item', this.listItems)
+            .subscribe(
+              data => {
+                console.log('Returned from create', data);
+              },
+              err => this.backandService.logError(err),
+              () => console.log('OK')
+            );
+        }
+      }
+    ]
+  });
+  this.viewCtrl.dismiss();
   }
 
   checkOffItem() {

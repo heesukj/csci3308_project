@@ -4,6 +4,8 @@ import { BackandService } from '../../providers/backandService';
 import { NavController, NavParams, PopoverController, ViewController } from 'ionic-angular';
 // 3) nav setup
 import { ListItemsPage } from '../list-items/list-items';
+import { Events } from 'ionic-angular';
+
 /*
   Generated class for the GroceryListPopover page.
 
@@ -22,7 +24,7 @@ export class GroceryListPopoverPage {
 
 
 
-  constructor(public viewCtrl: ViewController, public navParams: NavParams,public backandService:BackandService, private alertCtrl: AlertController) {
+  constructor(public viewCtrl: ViewController, public navParams: NavParams,public backandService:BackandService, private alertCtrl: AlertController, public events: Events) {
     console.log('GroceryListPopoverPage groceryList', navParams.data.groceryList);
     this.groceryList = navParams.data.groceryList;
     this.object = 'grocery_list';
@@ -102,6 +104,7 @@ export class GroceryListPopoverPage {
               console.log('returned from delete', data);
               //close the popover
               this.close();
+              this.events.publish('finished',data);
           },
           // 2nd argument is function to run when the operation fails
           err => this.backandService.logError(err),
