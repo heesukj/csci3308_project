@@ -13,10 +13,10 @@ import { SignupPage } from '../signup/signup';
 })
 export class LoginPage {
 
-    // username:string = '';
-    // password:string = '';
-    username:string = 'heesuk@gmail.com';
-    password:string = 'zxcvb123';
+    username:string = '';
+    password:string = '';
+    // username:string = 'heesuk@gmail.com';
+    // password:string = 'zxcvb123';
     auth_type:string = "N/A";
     is_auth_error:boolean = false;
     auth_status:string = null;
