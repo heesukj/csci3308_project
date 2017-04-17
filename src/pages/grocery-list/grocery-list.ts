@@ -26,12 +26,12 @@ export class GroceryListPage {
   public loggedInUserInfo: any;
   public items:any[] = [];
   create: string; '';
+  filter: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public backandService:BackandService, public popoverCtrl: PopoverController, private alertCtrl: AlertController, public events: Events) {
 
     this.searchQuery = '';
-    this.getGroceryList();
     this.loggedInUser = this.backandService.getUsername();
 
     let filter =
@@ -43,17 +43,29 @@ export class GroceryListPage {
             }
           ]
       ;
-
-
       this.backandService.getList('users', null, null, filter)
           .subscribe(
               data => {
                   this.loggedInUserInfo = data;
-                  this.create = this.loggedInUserInfo.id;
-                  console.log(this.create);
+                  this.filter = data[0].id
+
+                  let usrid =
+                        [
+                          {
+                            fieldName: 'user',
+                            operator: 'in',
+                            value: this.filter
+                          }
+                        ]
+                  ;
+                  this.filter = usrid;
+                  this.getGroceryList();
+
               },
               err => this.backandService.logError(err),
           );
+
+
   }
 
   ionViewDidLoad() {
@@ -148,11 +160,12 @@ export class GroceryListPage {
 }
 
   public getGroceryList() {
-     this.backandService.getList('grocery_list')
+     this.backandService.getList('grocery_list', null, null, this.filter)
           .subscribe(
               data => {
                   this.groceryLists = data;
                   console.log(this.groceryLists);
+                  console.log(this.filter);
               },
               err => this.backandService.logError(err),
           );
