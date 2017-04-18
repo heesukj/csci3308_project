@@ -5,6 +5,13 @@ Heesuk Jang, Jacob Hallberg, Juan Vargas-Murillo, Seungjeong Park, Hanye Han
 People use "Grocery With Me," to easily track and manage a grocery list while being connected with friends and families. 
 
 ## User Acceptance Test Plans
+|   | Sign In |
+|---|---------|
+| Sign-In Unit Test  |  describe('SignInController’', signIn() =&gt; { it(‘should check if sign-in is ok’,signIn())=&gt; { expect(this.username).toMatch(^\[A-Z0-9.\_%+-\]+@\[A-Z0-9.-\]+\\.\[A-Z\]{2,}$); expect(this.password).toMatch(\[a-zA-Z\]+\[\\d\]+|\[\\d\]+\[a-zA-Z\]+)\[^\\s\]\*); expect(this.auth\_status).toEqual(‘OK’); }); }); |
+| User Case:  |   As a User I want to sign-in with an username/email, and password.     |
+|  User Activity: | The User opens the app The User is on the login/sign-in page The User fills the input field with their User information. The User clicks the “login” button.         |
+|  Explanation: | The username and password are sent off to the signin api and just like in the signup function we are expecting an ‘OK’ as a response. Additionally, we have regex parsing for the username and password. If any of these fails the test fails.    |
+
 |   | Edit Quantity of Item |
 |---|-----------------------|
 |  Edit Quantity Unit Test: |          describe('EditItemQuantityController’', editQuantity() =&gt; { it('It should update the backend with new quantity', editQuantity() =&gt; { expect(this.rename\_status).toEqual(‘OK’); }); }); |
