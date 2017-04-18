@@ -6,7 +6,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { StartPage } from '../start/start';
 import { GroceryListPage } from '../grocery-list/grocery-list';
 import { SignupPage } from '../signup/signup';
-
+import { UserPage } from '../user/user';
 @Component({
     templateUrl: 'login.html',
     selector: 'page-login',
@@ -87,5 +87,8 @@ export class LoginPage {
     public gotoSignUp(){
         this.navCtrl.push(SignupPage);
     }
-
+    
+    public gotoUser(){
+	this.navCtrl.push(UserPage);
+    }
 }
