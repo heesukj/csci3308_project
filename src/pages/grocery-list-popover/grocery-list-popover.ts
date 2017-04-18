@@ -57,21 +57,27 @@ export class GroceryListPopoverPage {
         text: 'Rename',
         handler: data =>{
           this.change = data.newName;
-          this.delete();
+          //this.delete();
           this.groceryList.name = this.change;
-          // grocery_list is a table we created in model.json
-          this.backandService.create('grocery_list', this.groceryList)
-            .subscribe(
+            this.backandService.update('grocery_list', this.groceryList.id, this.groceryList, false, true)
+              .subscribe(
+              // 1st argument is function (take data as a param) to run when the operation is a success
+              // when I send post() the changes to server, server will make changes and and send the updated object back to UI
               data => {
-                console.log('Returned from create', data);
+                  console.log('returned from update', data);  // optional code (doesn't change the state of your codes, just used as a reference for the development)
+
               },
+              // 2nd argument is function to run when the operation fails
               err => this.backandService.logError(err),
+              // 3rd operation is function to run when the observable is done (in
+              // this case the asynchronous operation is the observable)
               () => console.log('OK')
-            );
+              );
         }
       }
     ]
   });
+
   alert.present();
   this.viewCtrl.dismiss();
   }
