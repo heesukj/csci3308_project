@@ -6,6 +6,9 @@ People use "Grocery With Me," to easily track and manage a grocery list while be
 
 ## User Acceptance Test Plans
 
+## Unit Test Output
+50.0.2661 (Mac OS X 10.11.4): Executed 3 of 3 SUCCESS (0.023 secs / 0.007 secs)
+
 ## Automated Test Cases
 
 
