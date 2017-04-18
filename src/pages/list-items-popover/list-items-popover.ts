@@ -103,7 +103,7 @@ export class ListItemsPopoverPage {
         }
       },
       {
-        text: 'Rename',
+        text: 'Update',
         handler: data =>{
           let newitem =
           [

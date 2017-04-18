@@ -26,6 +26,13 @@ block vs inline-->
     (ionInput)="filterItems($event.target.value)">
   </ion-searchbar>
 
+<div class="bar bar-header bar-balanced">
+ <h3 class="float-left">Item Name</h3>
+</div>
+
+<div class="bar bar-header bar-energized">
+ <h3 class="float-right">Quantity #</h3>
+</div>
   <ion-list>
     <!--  ngClass conditionally apply a class. in this case if item.checkedOff is true then add
           the is-checked class-->
@@ -34,7 +41,7 @@ block vs inline-->
 <!-- block components: set to inline or float them .css code
 margin: space between span inline-->
         <h2 class="float-left">{{ item.name }} </h2>
-        <p class="float-right">
+	<p class="float-right">
           <span class="right-margin">{{ item.quantity }}</span>
           <!-- in js, use === for boolean (not ==) that have the same type on both left and right operation
             "1" == 1 //this is true in js (regardless of different types)
