@@ -25,14 +25,6 @@ block vs inline-->
     [(ngModel)]="searchQuery"
     (ionInput)="filterItems($event.target.value)">
   </ion-searchbar>
-
-<div class="bar bar-header bar-balanced">
- <h3 class="float-left">Item Name</h3>
-</div>
-
-<div class="bar bar-header bar-energized">
- <h3 class="float-right">Quantity #</h3>
-</div>
   <ion-list>
     <!--  ngClass conditionally apply a class. in this case if item.checkedOff is true then add
           the is-checked class-->
@@ -40,15 +32,16 @@ block vs inline-->
         (press)="presentPopover(item)" [ngClass]="{'is-checked': item.checkedOff}">
 <!-- block components: set to inline or float them .css code
 margin: space between span inline-->
+        <hr/>
         <h2 class="float-left">{{ item.name }} </h2>
-	<p class="float-right">
-          <span class="right-margin">{{ item.quantity }}</span>
+	      <p class="float-right">
+          <span class="right-margin quantity-text">{{ item.quantity }}</span>
           <!-- in js, use === for boolean (not ==) that have the same type on both left and right operation
             "1" == 1 //this is true in js (regardless of different types)
             "1" === 1 //this is false in js since it is comparing a string and an int
          -->
          <!-- https://forum.ionicframework.com/t/using-ngif-to-filter-ion-slides-created-by-ngfor/39780 -->
-          <ion-icon *ngIf="item.checkedOff === true" ios="ios-checkmark" md="md-checkmark"></ion-icon>
+          <ion-icon class="item-checked" ios="ios-checkmark" md="md-checkmark"></ion-icon>
         </p>
 
       </ion-item>
