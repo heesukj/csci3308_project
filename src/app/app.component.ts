@@ -33,7 +33,6 @@ export class MyApp {
     });
 
     this.pages = [
-      { title: 'Login Page', component: SignupPage },
 { title: 'Login', component: LoginPage },
     ];
 }

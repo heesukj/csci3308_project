@@ -106,4 +106,6 @@ or
 # Declaration.ts:
 
         Ignore.
-
+        
+# Reference URL to How to Write Automated Tests for ionic app:
+https://gonehybrid.com/how-to-write-automated-tests-for-your-ionic-app-part-1/
