@@ -15,7 +15,7 @@
         {{ user.firstName }} {{user.lastName}}'s Lists
       </span> 
       <span class="align-right">
-      <button ion-button outline small color="dark" (click)="add()"> 
+      <button ion-button outline small color="blue" (click)="add()"> 
         <ion-icon name="add"></ion-icon>
       </button>
       </span>
@@ -44,7 +44,7 @@ when click a list.name (execute listSelected function which is defined in grocer
       press is long hold, > 500ms  (.5 seconds)
       tap is short click, < 250ms  (.25 seconds)
  -->
-  <ion-list class="heesuk">
+  <ion-list color="blue" padding class="heesuk">
       <button ion-item *ngFor="let groceryList of groceryLists"
               (press)="presentPopover(groceryList)" (tap)="listSelected(groceryList)">
         <h2>{{ groceryList.name }}</h2>

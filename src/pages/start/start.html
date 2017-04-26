@@ -1,46 +1,61 @@
-<ion-header>
-  <!-- <ion-navbar>
-    <!- <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button> -->
-    <!-- <ion-title>Page One</ion-title> -->
-  <!-- </ion-navbar> --> -->
+<ion-content class="StartPage">
+  <ion-slides pager>
+    <ion-slide *ngFor="let slide of slides">
+    <div text-center padding>
+        <img  src= "assets/images/name.png" >
+    </div>
+    <div text-center class="lato">
+      The best way to organize your shopping needs.
+    </div>
+      <ion-toolbar>
+        <ion-buttons end>
+        </ion-buttons>
+      </ion-toolbar>
+      <img [src]="slide.image" class="slide-image"/>
+      <h2 class="slide-title" [innerHTML]="slide.title"></h2>
+      <p [innerHTML]="slide.description"></p>
+      <div text-center class='font-size'>
+            <button  ion-button  round class="button-size" (click)="gotoSignUp()" color="success">Create Account</button>
+    </div>
+    <div text-center padding-top class='font-size'>
+        Already a user?
+    </div>
+    <div text-center class='font-size'>
+            <button ion-button outline round class="button-size" (click)="gotoLogin()" color="success">Login</button>      
+    </div>
+    </ion-slide>
+    
+   
 
-</ion-header>
-<ion-content padding>
-  <div text-center>
-      <img  src= "assets/images/logo.png" class="center-image" class="padding" class="size" >
+    <ion-slide>
+    <div text-center>
+        <img  src= "assets/images/logo.png" class="center-image" class="padding" class="size" >
+    </div>
+    <header text-center padding-left padding-right>
+        <img  src= "assets/images/name.png" >
+    </header>
+    <div text-center class="lato">
+      The best way to organize your shopping needs.
   </div>
-  <header text-center>
-      <h1>Grocery With Me</h1>
-  </header>
-  <div text-center class="lato">
-    The best way to organize your shopping needs.
-  </div>
-
-    <ion-item>
-        <ion-label floating>Email</ion-label>
-        <ion-input type="email" [value]="email" (input)="email = $event.target.value"></ion-input>
-    </ion-item>
-    <ion-item>
-        <ion-label floating>First Name</ion-label>
-        <ion-input type="text" [value]="firstName" (input)="firstName = $event.target.value"></ion-input>
-    </ion-item>
-    <ion-item>
-        <ion-label floating>Last Name</ion-label>
-        <ion-input type="text" [value]="lastName" (input)="lastName = $event.target.value"></ion-input>
-    </ion-item>
-    <ion-item>
-        <ion-label floating>Password</ion-label>
-        <ion-input type="password" [value]="signUpPassword" (input)="signUpPassword = $event.target.value"></ion-input>
-    </ion-item>
-    <ion-item>
-        <ion-label floating>Confirm Password</ion-label>
-        <ion-input type="password" [value]="confirmPassword" (input)="confirmPassword = $event.target.value"></ion-input>
-    </ion-item>
-  <div text-center>
-  <button ion-button (click)="signUp()" color="success" class="buttonCenter" class="button-font" class="buttonStyle" text-center>Sign Up For Free</button>
-  <h3 class='font-size'>Already a User?  <button ion-button (click)="gotoLogin()" color="success" class='smallButton' class="invis">Login</button>
-  </h3>
-  </div>
+    <div text-center class ="butpad">
+     <!-- Float the icon right -->
+    <button ion-button large (click)="gotoUser()" color="secondary" outline icon-center>
+    <ion-icon name="people"></ion-icon>
+    Developers
+    </button>
+    </div>
+      <ion-toolbar>
+          <div text-center class='font-size'>
+            <button  ion-button  round class="button-size" (click)="gotoSignUp()" color="success">Create Account</button>
+    </div>
+    <div text-center padding-top class='font-size'>
+        Already a user?
+    </div>
+    <div text-center padding-buttom class='font-size'>
+            <button ion-button outline round class="button-size" (click)="gotoLogin()" color="success">Login</button>      
+    </div>
+      </ion-toolbar>
+      <h2 class="slide-title"></h2>
+    </ion-slide>
+  </ion-slides>
 </ion-content>

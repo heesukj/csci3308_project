@@ -14,7 +14,7 @@ export class UserPage {
   slides = [
     {
       title: "Welcome to Grocery With Me!",
-      description: "The <b>Grocery With Me</b> application provides an easy access for any user to update the shopping list from anywhere ",
+      description: "The <b>Grocery With Me</b> application provides easy access for any user to update their shopping list from anywhere! ",
       image: "assets/images/info.png",
     },
 

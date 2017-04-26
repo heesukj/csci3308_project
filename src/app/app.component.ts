@@ -14,7 +14,7 @@ import {BackandService} from '../providers/backandService'
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage = LoginPage;
+  rootPage = StartPage;
 
   pages: Array<{title: string, component: any}>;
 
